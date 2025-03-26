@@ -55,7 +55,7 @@ const About = () => {
               {/* Profile Image Section */}
               <div className="md:w-1/3 bg-lawyer-navy p-8 flex flex-col justify-center items-center text-center">
                 <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
                   alt="Mohammad Obaid" 
                   className="w-48 h-48 rounded-full object-cover border-4 border-white mb-6"
                 />

@@ -62,7 +62,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <img 
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
                 alt="Mohammad Obaid, Advocate" 
                 className="rounded-lg shadow-xl w-full max-w-md mx-auto"
               />

@@ -28,27 +28,17 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1589994965851-a418e271b4cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')",
-            backgroundPosition: 'center 30%',
-            height: '50%'
-          }}
-        />
-        <div className="absolute inset-0 bg-lawyer-navy bg-opacity-70" style={{ height: '50%' }}></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
+      <section className="relative bg-lawyer-navy py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 animate-fade-in">
             About Mohammad Obaid
           </h1>
-          <div className="h-1 w-20 bg-lawyer-gold mx-auto mb-12"></div>
+          <div className="h-1 w-32 bg-lawyer-gold mx-auto"></div>
         </div>
       </section>
       
       {/* About Content */}
-      <section className="py-12 pb-24 -mt-20">
+      <section className="py-16 -mt-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-xl overflow-hidden">
             <div className="md:flex">

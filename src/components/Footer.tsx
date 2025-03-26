@@ -17,10 +17,10 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-6 md:space-y-0">
           <div className="max-w-sm">
-            <h3 className="text-2xl font-playfair font-bold mb-3">Rajiv Kumar</h3>
+            <h3 className="text-2xl font-playfair font-bold mb-3">Mohammad Obaid</h3>
             <p className="text-gray-300 mb-4">Trusted Legal Services in India</p>
             <p className="text-gray-300 text-sm">
-              Providing expert legal counsel and representation in Delhi, India.
+              Providing expert legal counsel and representation at the Calcutta High Court.
             </p>
           </div>
           <div>
@@ -41,16 +41,16 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-3">Contact</h4>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>Delhi High Court</p>
-              <p>Delhi, India</p>
-              <p>Email: advocate@example.com</p>
-              <p>Phone: +91-98765-43210</p>
+              <p>Calcutta High Court</p>
+              <p>Kolkata, West Bengal</p>
+              <p>Email: obaidmu018@gmail.com</p>
+              <p>Phone: +91-9123058260</p>
             </address>
           </div>
         </div>
         <div className="border-t border-gray-700 pt-6 mt-6">
           <p className="text-center text-gray-400 text-sm">
-            © {currentYear} Rajiv Kumar | All Rights Reserved
+            © {currentYear} Mohammad Obaid | All Rights Reserved
           </p>
         </div>
       </div>

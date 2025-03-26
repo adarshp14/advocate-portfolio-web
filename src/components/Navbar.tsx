@@ -41,7 +41,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <NavLink to="/" className="block">
               <div className="font-playfair text-lawyer-navy">
-                <h1 className="text-xl md:text-2xl font-bold">Rajiv Kumar</h1>
+                <h1 className="text-xl md:text-2xl font-bold">Mohammad Obaid</h1>
                 <p className="text-xs md:text-sm text-lawyer-muted">Advocate & Legal Consultant</p>
               </div>
             </NavLink>

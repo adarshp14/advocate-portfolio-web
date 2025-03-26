@@ -96,16 +96,16 @@ const Contact = () => {
                   <div className="space-y-6 text-gray-300">
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Address</h3>
-                      <p>Delhi High Court</p>
-                      <p>New Delhi, India</p>
+                      <p>Calcutta High Court</p>
+                      <p>Kolkata, West Bengal</p>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-                      <p>advocate@example.com</p>
+                      <p>obaidmu018@gmail.com</p>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-                      <p>+91-98765-43210</p>
+                      <p>+91-9123058260</p>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Office Hours</h3>
@@ -227,7 +227,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-lg shadow-lg opacity-0 reveal">
             <div className="bg-gray-200 h-96 flex items-center justify-center">
-              <p className="text-gray-700 text-xl font-medium">Google Map Placeholder - Delhi High Court Location</p>
+              <p className="text-gray-700 text-xl font-medium">Google Map Placeholder - Calcutta High Court Location</p>
             </div>
           </div>
         </div>

@@ -42,7 +42,7 @@ const Index = () => {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Your Trusted Legal Partner in Delhi, India
+            Your Trusted Legal Partner in Kolkata, India
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8">
             Dedicated to excellence and committed to your success
@@ -63,17 +63,17 @@ const Index = () => {
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <img 
                 src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Rajiv Kumar, Advocate" 
+                alt="Mohammad Obaid, Advocate" 
                 className="rounded-lg shadow-xl w-full max-w-md mx-auto"
               />
             </div>
             <div className="md:w-1/2 opacity-0 reveal">
               <h2 className="section-title pb-3">About Me</h2>
               <p className="text-lg text-gray-700 mb-6">
-                I am Rajiv Kumar, a dedicated and experienced lawyer practicing in Delhi, India. With a passion for justice and years of expertise, I provide personalized legal solutions to my clients.
+                I am Mohammad Obaid, a dedicated and experienced lawyer practicing at the Calcutta High Court. With a passion for justice and specialized expertise, I provide personalized legal solutions to my clients.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                My approach combines legal expertise with a deep understanding of my clients' needs. I believe in providing practical, effective solutions that protect your interests.
+                As an experienced advocate, I handle both civil and criminal matters with a focus on providing tailored legal solutions for each client. I also specialize in arbitration and facilitate the Alternate Dispute Resolution (ADR) process.
               </p>
               <Link to="/about" className="text-lawyer-navy font-medium inline-flex items-center group">
                 Learn More 
@@ -100,7 +100,7 @@ const Index = () => {
             {[
               {
                 title: "Experienced Lawyer",
-                description: "Years of practice in various areas of law, with a track record of successful cases.",
+                description: "Three years of practice at the Calcutta High Court, with a track record of successful cases.",
                 delay: 100
               },
               {
@@ -109,8 +109,8 @@ const Index = () => {
                 delay: 200
               },
               {
-                title: "Affordable Rates",
-                description: "Quality legal service doesn't have to be expensive. I offer competitive rates without compromising on quality.",
+                title: "Specialized Expertise",
+                description: "Expert in civil and criminal matters, arbitration, and Alternative Dispute Resolution (ADR).",
                 delay: 300
               }
             ].map((item, index) => (
@@ -140,16 +140,16 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                title: "Civil Litigation",
+                description: "Expert representation in all types of civil disputes and proceedings."
+              },
+              {
                 title: "Criminal Defense",
                 description: "Representation in criminal cases with a focus on protecting your rights."
               },
               {
-                title: "Family Law",
-                description: "Expert advice on divorce, child custody, and alimony matters."
-              },
-              {
-                title: "Property Disputes",
-                description: "Legal support for property-related conflicts and documentation."
+                title: "Arbitration & ADR",
+                description: "Specialized services for resolving disputes outside the traditional court system."
               }
             ].map((service, index) => (
               <div key={index} className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 opacity-0 reveal">

@@ -41,7 +41,7 @@ const About = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-            About Rajiv Kumar
+            About Mohammad Obaid
           </h1>
           <div className="h-1 w-20 bg-lawyer-gold mx-auto mb-12"></div>
         </div>
@@ -56,18 +56,18 @@ const About = () => {
               <div className="md:w-1/3 bg-lawyer-navy p-8 flex flex-col justify-center items-center text-center">
                 <img 
                   src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                  alt="Rajiv Kumar" 
+                  alt="Mohammad Obaid" 
                   className="w-48 h-48 rounded-full object-cover border-4 border-white mb-6"
                 />
-                <h3 className="text-white text-xl font-bold mb-2">Rajiv Kumar</h3>
+                <h3 className="text-white text-xl font-bold mb-2">Mohammad Obaid</h3>
                 <p className="text-gray-300 mb-4">Advocate & Legal Consultant</p>
                 <div className="bg-white/10 rounded-lg p-4 w-full">
                   <h4 className="text-white font-medium mb-2">Contact Information</h4>
                   <div className="text-gray-300 text-sm space-y-1">
-                    <p>Delhi High Court</p>
-                    <p>Delhi, India</p>
-                    <p>advocate@example.com</p>
-                    <p>+91-98765-43210</p>
+                    <p>Calcutta High Court</p>
+                    <p>Kolkata, West Bengal</p>
+                    <p>obaidmu018@gmail.com</p>
+                    <p>+91-9123058260</p>
                   </div>
                 </div>
               </div>
@@ -77,30 +77,35 @@ const About = () => {
                 <div className="mb-10 opacity-0 reveal">
                   <h2 className="section-title pb-3">Professional Background</h2>
                   <p className="text-gray-700 mb-4">
-                    I am a qualified lawyer with 15 years of experience in the Indian legal system. I specialize in civil law, criminal law, family law, and property disputes. My mission is to provide affordable and effective legal assistance to individuals and businesses.
+                    As an experienced advocate, I handle both civil and criminal matters with a focus on providing tailored legal solutions for each client. I also specialize in arbitration and facilitate the Alternate Dispute Resolution (ADR) process, offering efficient and effective methods for resolving disputes outside the courtroom.
                   </p>
                   <p className="text-gray-700 mb-4">
-                    After graduating with a Bachelor of Laws (LLB) from Delhi University in 2008, I established my practice with a focus on helping clients navigate complex legal challenges with clarity and confidence.
+                    Having practiced law at the Hon'ble High Court at Calcutta for the past three years, I have built a strong reputation for my commitment to achieving the best outcomes through diligent advocacy and expert legal advice.
                   </p>
                   <p className="text-gray-700">
-                    My approach combines deep legal knowledge with a practical understanding of how to achieve the best outcomes for my clients. I believe that effective legal representation requires not only expertise in law but also a genuine commitment to understanding each client's unique situation.
+                    Whether you're facing a civil case, criminal charges, arbitration proceedings, or seeking ADR options, I am here to provide you with comprehensive, professional legal support.
                   </p>
                 </div>
                 
                 <div className="mb-10 opacity-0 reveal">
-                  <h2 className="section-title pb-3">Education</h2>
+                  <h2 className="section-title pb-3">Education & Credentials</h2>
                   <div className="mb-6">
-                    <h3 className="text-xl font-bold text-lawyer-navy mb-2">Bachelor of Laws (LLB)</h3>
-                    <p className="text-gray-600">Delhi University, 2008</p>
-                    <p className="text-gray-700 mt-2">
-                      Graduated with honors, specializing in Constitutional and Criminal Law.
-                    </p>
+                    <h3 className="text-xl font-bold text-lawyer-navy mb-2">Advocate Certificate</h3>
+                    <p className="text-gray-600">Bar Council of India, 2023</p>
+                    <div className="mt-4 border rounded-lg p-2 shadow-sm max-w-lg mx-auto md:mx-0">
+                      <img 
+                        src="/lovable-uploads/4e94bb51-40a2-456b-8dfd-8eeb8f380002.png" 
+                        alt="Mohammad Obaid's Certificate of Practice" 
+                        className="w-full rounded"
+                      />
+                      <p className="text-sm text-gray-500 mt-2 text-center">Certificate of Practice - Enrollment No. F/1220/867/2022</p>
+                    </div>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-lawyer-navy mb-2">Bar Council Registration</h3>
-                    <p className="text-gray-600">Bar Council of Delhi, 2008</p>
+                    <p className="text-gray-600">Bar Council of India, 2023</p>
                     <p className="text-gray-700 mt-2">
-                      Registered advocate with the Bar Council of Delhi, authorized to practice law across India.
+                      Registered advocate with the Bar Council of India, authorized to practice law across India. Successfully qualified in the All India Bar Examination-XVII.
                     </p>
                   </div>
                 </div>
@@ -145,12 +150,12 @@ const About = () => {
                 details: "Managing divorce, child custody, alimony, and domestic relations cases with sensitivity."
               },
               {
-                area: "Corporate Law",
-                details: "Advising businesses on compliance, contracts, and dispute resolution."
+                area: "Arbitration",
+                details: "Providing specialized arbitration services to help resolve disputes outside the traditional court system."
               },
               {
-                area: "Property Law",
-                details: "Dealing with property transactions, disputes, and documentation."
+                area: "Alternative Dispute Resolution",
+                details: "Facilitating efficient and cost-effective dispute resolution through mediation and negotiation."
               },
               {
                 area: "Constitutional Law",

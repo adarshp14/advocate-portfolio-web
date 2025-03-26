@@ -34,11 +34,11 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1589994965851-a418e271b4cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')",
-            backgroundPosition: 'center 65%'
+            backgroundImage: "url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')",
+            backgroundPosition: 'center'
           }}
         />
-        <div className="absolute inset-0 bg-lawyer-navy bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-lawyer-navy bg-opacity-75"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">

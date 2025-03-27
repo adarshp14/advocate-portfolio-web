@@ -4,9 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 interface ConsultationButtonProps {
   fullWidth?: boolean;
+  customStyle?: string;
 }
 
-const ConsultationButton: React.FC<ConsultationButtonProps> = ({ fullWidth = false }) => {
+const ConsultationButton: React.FC<ConsultationButtonProps> = ({ 
+  fullWidth = false, 
+  customStyle 
+}) => {
   const navigate = useNavigate();
   
   const handleClick = () => {
@@ -24,7 +28,7 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = ({ fullWidth = fal
   return (
     <button 
       onClick={handleClick}
-      className={`btn-primary ${fullWidth ? 'w-full' : ''}`}
+      className={`${customStyle || 'btn-primary'} ${fullWidth ? 'w-full' : ''}`}
     >
       Book a Consultation
     </button>

@@ -5,25 +5,8 @@ import { Menu, X } from 'lucide-react';
 import ConsultationButton from './ConsultationButton';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    // Initial check on mount
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -37,22 +20,15 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
   
-  // Check if the current page has a dark background that would require white text
-  const hasDarkHero = location.pathname === '/';
-  // Always use navy text when at the very top of homepage or when scrolled
-  const textColor = isScrolled || !hasDarkHero ? 'text-lawyer-navy' : 'text-white';
-  
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md py-2' : (hasDarkHero ? 'bg-transparent py-4' : 'bg-white py-4')
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 w-full z-50 bg-[#1A2A44] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <NavLink to="/" className="block">
-              <div className={`font-playfair ${textColor}`}>
+              <div className="font-playfair text-white">
                 <h1 className="text-xl md:text-2xl font-bold">Muhammad Obaid</h1>
-                <p className="text-xs md:text-sm text-lawyer-muted">Advocate & Legal Consultant</p>
+                <p className="text-xs md:text-sm text-white/80">Advocate & Legal Consultant</p>
               </div>
             </NavLink>
           </div>
@@ -64,18 +40,18 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) => 
-                  `nav-link ${isActive ? 'active' : ''} ${textColor}`
+                  `nav-link text-white ${isActive ? 'active' : ''}`
                 }
               >
                 {link.name}
               </NavLink>
             ))}
-            <ConsultationButton />
+            <ConsultationButton customStyle="bg-[#FFD700] text-[#1A2A44] px-4 py-2 rounded" />
           </nav>
 
           {/* Mobile Menu Button */}
           <button 
-            className={`md:hidden ${textColor}`}
+            className="md:hidden text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -85,14 +61,14 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 bg-white shadow-lg rounded-md mt-2 animate-fade-in">
+          <nav className="md:hidden py-4 bg-[#1A2A44] rounded-md mt-2 animate-fade-in">
             <ul className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => 
-                      `nav-link block py-2 px-4 ${isActive ? 'active' : ''}`
+                      `nav-link block py-2 px-4 text-white ${isActive ? 'active' : ''}`
                     }
                   >
                     {link.name}
@@ -100,7 +76,7 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="pt-2 px-4">
-                <ConsultationButton fullWidth />
+                <ConsultationButton customStyle="bg-[#FFD700] text-[#1A2A44] w-full px-4 py-2 rounded" fullWidth />
               </li>
             </ul>
           </nav>

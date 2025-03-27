@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ConsultationButton from '../components/ConsultationButton';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Blog = () => {
   // Animation on scroll effect
@@ -140,32 +141,34 @@ const Blog = () => {
             
             <div className="lg:col-span-1">
               <div className="sticky top-24">
-                <div className="bg-white rounded-lg shadow-lg p-6 mb-8 opacity-0 reveal">
-                  <h3 className="text-xl font-bold text-lawyer-navy mb-4">About the Author</h3>
-                  <div className="flex items-center mb-4">
-                    <img 
-                      src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
-                      alt="Muhammad Obaid" 
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h4 className="font-bold">Muhammad Obaid</h4>
-                      <p className="text-sm text-gray-600">Advocate at Calcutta High Court</p>
+                <Card className="mb-8 opacity-0 reveal">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold text-lawyer-navy mb-4">About the Author</h3>
+                    <div className="flex items-center mb-4">
+                      <img 
+                        src="/lovable-uploads/96b51200-5773-42b6-ad91-3ba7c7d42bd0.png" 
+                        alt="Muhammad Obaid" 
+                        className="w-16 h-16 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h4 className="font-bold">Muhammad Obaid</h4>
+                        <p className="text-sm text-gray-600">Advocate at Calcutta High Court</p>
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-gray-700 mb-4">
-                    Practicing advocate with expertise in civil and criminal matters across West Bengal courts.
-                  </p>
-                  <Link 
-                    to="/about" 
-                    className="text-lawyer-navy font-medium inline-flex items-center group"
-                  >
-                    Learn More
-                    <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                  </Link>
-                </div>
+                    <p className="text-gray-700 mb-4">
+                      Practicing advocate with expertise in civil and criminal matters across West Bengal courts.
+                    </p>
+                    <Link 
+                      to="/about" 
+                      className="text-lawyer-navy font-medium inline-flex items-center group"
+                    >
+                      Learn More
+                      <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </Link>
+                  </CardContent>
+                </Card>
                 
                 <div className="bg-lawyer-navy rounded-lg shadow-lg p-6 text-white opacity-0 reveal">
                   <h3 className="text-xl font-bold mb-4">Need Legal Help?</h3>

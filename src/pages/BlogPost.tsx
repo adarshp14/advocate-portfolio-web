@@ -245,7 +245,7 @@ const BlogPost = () => {
           </h1>
           <div className="flex items-center justify-center text-white mb-8">
             <img 
-              src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
+              src="/lovable-uploads/96b51200-5773-42b6-ad91-3ba7c7d42bd0.png" 
               alt={post.author} 
               className="w-10 h-10 rounded-full object-cover mr-3"
             />
@@ -260,7 +260,7 @@ const BlogPost = () => {
       <section className="py-16 -mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-xl p-6 md:p-10 opacity-0 reveal">
-            <article className="prose prose-lg max-w-none">
+            <article className="prose prose-lg max-w-none blog-post">
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
             
@@ -270,7 +270,7 @@ const BlogPost = () => {
                   <h3 className="text-xl font-bold text-lawyer-navy mb-2">About the Author</h3>
                   <div className="flex items-center">
                     <img 
-                      src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
+                      src="/lovable-uploads/96b51200-5773-42b6-ad91-3ba7c7d42bd0.png" 
                       alt="Muhammad Obaid" 
                       className="w-12 h-12 rounded-full object-cover mr-3"
                     />

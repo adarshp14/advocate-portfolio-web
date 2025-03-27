@@ -38,11 +38,12 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  const isBlogPost = location.pathname.includes('/blog/');
+  // Check if current path is blog or blog post
+  const isBlogPath = location.pathname === '/blog' || location.pathname.startsWith('/blog/');
   
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled || isBlogPost ? 'bg-white shadow-md py-2' : 'bg-white py-4'
+      isScrolled || isBlogPath ? 'bg-white shadow-md py-2' : 'bg-white py-4'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -62,7 +63,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) => 
-                  isActive || (link.path === '/blog' && isBlogPost) 
+                  isActive || (link.path === '/blog' && location.pathname.startsWith('/blog/')) 
                     ? 'nav-link active' 
                     : 'nav-link'
                 }
@@ -92,7 +93,7 @@ const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => 
-                      isActive || (link.path === '/blog' && isBlogPost)
+                      isActive || (link.path === '/blog' && location.pathname.startsWith('/blog/'))
                         ? 'nav-link active block py-2 px-4' 
                         : 'nav-link block py-2 px-4'
                     }

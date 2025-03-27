@@ -41,7 +41,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <NavLink to="/" className="block">
               <div className="font-playfair text-lawyer-navy">
-                <h1 className="text-xl md:text-2xl font-bold">Mohammad Obaid</h1>
+                <h1 className="text-xl md:text-2xl font-bold">Muhammad Obaid</h1>
                 <p className="text-xs md:text-sm text-lawyer-muted">Advocate & Legal Consultant</p>
               </div>
             </NavLink>
@@ -75,21 +75,21 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 animate-fade-in">
+          <nav className="md:hidden py-4 bg-white shadow-lg rounded-md mt-2 animate-fade-in">
             <ul className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => 
-                      isActive ? 'nav-link active block py-2' : 'nav-link block py-2'
+                      isActive ? 'nav-link active block py-2 px-4' : 'nav-link block py-2 px-4'
                     }
                   >
                     {link.name}
                   </NavLink>
                 </li>
               ))}
-              <li className="pt-2">
+              <li className="pt-2 px-4">
                 <ConsultationButton fullWidth />
               </li>
             </ul>

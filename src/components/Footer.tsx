@@ -19,11 +19,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-6 md:space-y-0">
           <div className="max-w-sm flex flex-col md:flex-row items-center md:items-start gap-4">
             <Avatar className="w-16 h-16 border-2 border-white">
-              <AvatarImage src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" alt="Mohammad Obaid" />
+              <AvatarImage src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" alt="Muhammad Obaid" />
               <AvatarFallback>MO</AvatarFallback>
             </Avatar>
             <div>
-              <h3 className="text-2xl font-playfair font-bold mb-3">Mohammad Obaid</h3>
+              <h3 className="text-2xl font-playfair font-bold mb-3">Muhammad Obaid</h3>
               <p className="text-gray-300 mb-4">Trusted Legal Services in India</p>
               <p className="text-gray-300 text-sm">
                 Providing expert legal counsel and representation at the Calcutta High Court.
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
         <div className="border-t border-gray-700 pt-6 mt-6">
           <p className="text-center text-gray-400 text-sm">
-            © {currentYear} Mohammad Obaid | All Rights Reserved
+            © {currentYear} Muhammad Obaid | All Rights Reserved
           </p>
         </div>
       </div>

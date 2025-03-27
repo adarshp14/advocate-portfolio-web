@@ -31,7 +31,7 @@ const About = () => {
       <section className="relative bg-lawyer-navy py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 animate-fade-in">
-            About Mohammad Obaid
+            About Muhammad Obaid
           </h1>
           <div className="h-1 w-32 bg-lawyer-gold mx-auto"></div>
         </div>
@@ -46,10 +46,10 @@ const About = () => {
               <div className="md:w-1/3 bg-lawyer-navy p-8 flex flex-col justify-center items-center text-center">
                 <img 
                   src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
-                  alt="Mohammad Obaid" 
+                  alt="Muhammad Obaid" 
                   className="w-48 h-48 rounded-full object-cover border-4 border-white mb-6"
                 />
-                <h3 className="text-white text-xl font-bold mb-2">Mohammad Obaid</h3>
+                <h3 className="text-white text-xl font-bold mb-2">Muhammad Obaid</h3>
                 <p className="text-gray-300 mb-4">Advocate & Legal Consultant</p>
                 <div className="bg-white/10 rounded-lg p-4 w-full">
                   <h4 className="text-white font-medium mb-2">Contact Information</h4>
@@ -85,7 +85,7 @@ const About = () => {
                     <div className="mt-4 border rounded-lg p-2 shadow-sm max-w-lg mx-auto md:mx-0">
                       <img 
                         src="/lovable-uploads/4e94bb51-40a2-456b-8dfd-8eeb8f380002.png" 
-                        alt="Mohammad Obaid's Certificate of Practice" 
+                        alt="Muhammad Obaid's Certificate of Practice" 
                         className="w-full rounded"
                       />
                       <p className="text-sm text-gray-500 mt-2 text-center">Certificate of Practice - Enrollment No. F/1220/867/2022</p>

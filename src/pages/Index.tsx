@@ -63,14 +63,14 @@ const Index = () => {
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
               <img 
                 src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
-                alt="Mohammad Obaid, Advocate" 
+                alt="Muhammad Obaid, Advocate" 
                 className="rounded-lg shadow-xl w-full max-w-md mx-auto"
               />
             </div>
             <div className="md:w-1/2 opacity-0 reveal">
               <h2 className="section-title pb-3">About Me</h2>
               <p className="text-lg text-gray-700 mb-6">
-                I am Mohammad Obaid, a dedicated and experienced lawyer practicing at the Calcutta High Court. With a passion for justice and specialized expertise, I provide personalized legal solutions to my clients.
+                I am Muhammad Obaid, a dedicated and experienced lawyer practicing at the Calcutta High Court. With a passion for justice and specialized expertise, I provide personalized legal solutions to my clients.
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 As an experienced advocate, I handle both civil and criminal matters with a focus on providing tailored legal solutions for each client. I also specialize in arbitration and facilitate the Alternate Dispute Resolution (ADR) process.

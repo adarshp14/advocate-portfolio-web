@@ -143,11 +143,43 @@
   .btn-primary, .btn-secondary {
     @apply px-4 py-2 text-sm;
   }
+  
+  .hero-text h1 {
+    @apply text-3xl;
+  }
+  
+  .hero-text p {
+    @apply text-base;
+  }
+  
+  .glass-card {
+    @apply p-4;
+  }
+  
+  .nav-link {
+    @apply text-sm;
+  }
 }
 
 @media (max-width: 768px) {
   .page-container {
     @apply py-8;
+  }
+  
+  .section-title::after {
+    @apply w-12;
+  }
+  
+  .hero-text h1 {
+    @apply text-4xl;
+  }
+  
+  .glass-card {
+    @apply p-5;
+  }
+  
+  .section-title {
+    @apply text-2xl md:text-3xl;
   }
 }
 
@@ -155,4 +187,59 @@
   .glass-card {
     @apply p-4;
   }
+  
+  .section-title {
+    @apply text-3xl;
+  }
+  
+  .page-container {
+    @apply px-4 py-16;
+  }
+}
+
+/* Animation for revealing elements */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Special headings for SEO */
+.seo-heading {
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold text-lawyer-navy mb-4;
+}
+
+.seo-subheading {
+  @apply text-xl md:text-2xl font-semibold text-lawyer-navy mb-3;
+}
+
+/* Enhanced link styles for better accessibility */
+.internal-link {
+  @apply text-lawyer-navy hover:text-lawyer-gold underline decoration-dotted underline-offset-4 transition-colors duration-300;
+}
+
+/* Freshness indicators for content */
+.last-updated {
+  @apply text-xs text-gray-500 italic mt-2;
+}
+
+/* Enhanced image styles with proper aspect ratios */
+.seo-image {
+  @apply w-full h-auto object-cover rounded-lg shadow-md;
+  aspect-ratio: 16 / 9;
+}
+
+/* Location markers for local SEO */
+.location-marker {
+  @apply inline-flex items-center text-lawyer-navy;
+}
+
+.location-marker::before {
+  content: '📍';
+  @apply mr-1;
 }

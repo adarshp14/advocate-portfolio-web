@@ -35,6 +35,11 @@ const Index = () => {
         <meta name="description" content="Muhammad Obaid provides expert legal representation at Calcutta High Court and trial courts across West Bengal. Book a consultation today!" />
         <link rel="canonical" href="https://advocate-obaid.vercel.app/" />
         <meta property="og:url" content="https://advocate-obaid.vercel.app/" />
+        <meta name="keywords" content="lawyer in Kolkata, lawyer in Howrah, Advocate Obaid, legal services India, civil litigation Kolkata, criminal defense West Bengal" />
+        <meta name="author" content="Muhammad Obaid" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="language" content="English" />
         <script type="application/ld+json">
           {`
             {
@@ -201,22 +206,25 @@ const Index = () => {
             {[
               {
                 title: "Civil Litigation",
-                description: "Expert representation in all types of civil disputes and proceedings in Calcutta High Court and district courts."
+                description: "Expert representation in all types of civil disputes and proceedings in Calcutta High Court and district courts.",
+                link: "/services#civil"
               },
               {
                 title: "Criminal Defense",
-                description: "Strong defense strategies and representation in criminal cases with a focus on protecting your rights across West Bengal courts."
+                description: "Strong defense strategies and representation in criminal cases with a focus on protecting your rights across West Bengal courts.",
+                link: "/services#criminal"
               },
               {
                 title: "Arbitration & ADR",
-                description: "Specialized services for resolving disputes outside the traditional court system in Kolkata and throughout West Bengal."
+                description: "Specialized services for resolving disputes outside the traditional court system in Kolkata and throughout West Bengal.",
+                link: "/services#arbitration"
               }
             ].map((service, index) => (
               <div key={index} className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 opacity-0 reveal">
                 <h3 className="text-xl font-bold text-lawyer-navy mb-3">{service.title}</h3>
                 <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link to="/services" className="text-lawyer-navy font-medium inline-flex items-center group">
-                  Explore Legal Services 
+                <Link to={service.link} className="text-lawyer-navy font-medium inline-flex items-center group">
+                  Learn More
                   <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
@@ -227,13 +235,73 @@ const Index = () => {
           
           <div className="mt-12 text-center opacity-0 reveal">
             <p className="text-xl font-medium text-lawyer-navy mb-6">Need legal help in Kolkata or Howrah? Contact me today!</p>
-            <ConsultationButton />
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <ConsultationButton />
+              <Link to="/contact" className="btn-secondary">
+                View Contact Information
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Blog Posts Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 opacity-0 reveal">
+            <h2 className="section-title inline-block pb-3 mb-4 after:left-1/2 after:-translate-x-1/2">Legal Insights & Articles</h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Stay informed with the latest legal updates and advice for Kolkata and Howrah residents.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "How to Find the Best Lawyer in Kolkata",
+                excerpt: "Discover the key factors to consider when searching for legal representation in Kolkata and Howrah.",
+                slug: "/blog/how-to-find-best-lawyer-kolkata",
+                date: "November 16, 2023"
+              },
+              {
+                title: "Civil Litigation Laws in India Explained",
+                excerpt: "A comprehensive guide to understanding civil litigation processes in West Bengal courts.",
+                slug: "/blog/civil-litigation-laws-india-explained",
+                date: "November 10, 2023"
+              },
+              {
+                title: "Avoid These Legal Mistakes in Kolkata & Howrah",
+                excerpt: "Common legal pitfalls and how to avoid them when dealing with legal matters in West Bengal.",
+                slug: "/blog/avoid-legal-mistakes-kolkata-howrah",
+                date: "November 5, 2023"
+              }
+            ].map((post, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden opacity-0 reveal">
+                <div className="p-6">
+                  <p className="text-sm text-lawyer-gold mb-2">{post.date}</p>
+                  <h3 className="text-xl font-bold text-lawyer-navy mb-3">{post.title}</h3>
+                  <p className="text-gray-700 mb-4">{post.excerpt}</p>
+                  <Link to={post.slug} className="text-lawyer-navy font-medium inline-flex items-center group">
+                    Read Full Article
+                    <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-10 text-center opacity-0 reveal">
+            <Link to="/blog" className="btn-primary">
+              View All Blog Posts
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Location Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 opacity-0 reveal">
             <h2 className="section-title inline-block pb-3 mb-4 after:left-1/2 after:-translate-x-1/2">Proudly Serving Clients in Kolkata & Howrah</h2>
@@ -249,13 +317,25 @@ const Index = () => {
                 <p className="text-gray-700 mb-2">2ND FLOOR (BACK SIDE)</p>
                 <p className="text-gray-700 mb-2">7A KIRAN SHANKAR ROY ROAD</p>
                 <p className="text-gray-700 mb-6">KOLKATA, WEST BENGAL, PIN 700001</p>
-                <p className="text-gray-700">Specializing in Calcutta High Court representation and civil litigation matters.</p>
+                <p className="text-gray-700 mb-4">Specializing in Calcutta High Court representation and civil litigation matters.</p>
+                <Link to="/contact" className="text-lawyer-navy font-medium inline-flex items-center group">
+                  Contact This Location
+                  <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </Link>
               </div>
               <div className="pt-6 md:pt-0 md:pl-6">
                 <h3 className="text-xl font-bold text-lawyer-navy mb-4">Howrah Chamber/Residence</h3>
                 <p className="text-gray-700 mb-2">47 PILKHANA 3RD LANE</p>
                 <p className="text-gray-700 mb-6">HOWRAH, WEST BENGAL, PIN 711101</p>
-                <p className="text-gray-700">Providing legal services for local Howrah matters and district court cases.</p>
+                <p className="text-gray-700 mb-4">Providing legal services for local Howrah matters and district court cases.</p>
+                <Link to="/contact" className="text-lawyer-navy font-medium inline-flex items-center group">
+                  Contact This Location
+                  <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import emailjs from 'emailjs-com';
@@ -56,10 +57,10 @@ const Contact = () => {
     };
     
     emailjs.send(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
+      'service_id', // You'll need to create a service ID in EmailJS
+      'template_f5yju3b', // Your template ID
       templateParams,
-      'YOUR_PUBLIC_KEY'
+      'yo0m4VAbhpETK_JGa' // Your public key
     )
       .then(() => {
         toast.success('Your message has been sent successfully!');

@@ -55,10 +55,10 @@ const Contact = () => {
     };
     
     emailjs.send(
-      'service_id', // Replace this with your actual EmailJS service ID
-      'template_f5yju3b', // Your template ID - already set
+      'service_6managk',
+      'template_f5yju3b',
       templateParams,
-      'yo0m4VAbhpETK_JGa' // Your public key - already set
+      'yo0m4VAbhpETK_JGa'
     )
       .then(() => {
         toast.success('Your message has been sent successfully!');

@@ -38,7 +38,7 @@ const Blog = () => {
       slug: "how-to-find-best-lawyer-kolkata",
       excerpt: "Navigating the legal landscape in Kolkata can be challenging. Learn key factors to consider when choosing the right advocate for your legal needs in West Bengal.",
       date: "August 15, 2023",
-      image: "https://images.unsplash.com/photo-1589394101658-49c8ae636826?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png",
       categories: ["Legal Advice", "Kolkata"]
     },
     {
@@ -47,7 +47,7 @@ const Blog = () => {
       slug: "civil-litigation-laws-india-explained",
       excerpt: "Understanding the fundamentals of civil litigation in India. This guide breaks down essential laws and procedures for cases in the Calcutta High Court and beyond.",
       date: "September 22, 2023",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/4e94bb51-40a2-456b-8dfd-8eeb8f380002.png",
       categories: ["Civil Law", "Legal Education"]
     },
     {
@@ -56,7 +56,7 @@ const Blog = () => {
       slug: "avoid-legal-mistakes-kolkata-howrah",
       excerpt: "Common legal pitfalls that residents and businesses in Kolkata and Howrah should be aware of. Learn how to protect your interests and navigate legal challenges.",
       date: "October 10, 2023",
-      image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "/lovable-uploads/96b51200-5773-42b6-ad91-3ba7c7d42bd0.png",
       categories: ["Legal Tips", "Risk Management"]
     }
   ];
@@ -74,7 +74,7 @@ const Blog = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')",
+            backgroundImage: "url('/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png')",
             backgroundPosition: 'center 30%',
             height: '50%'
           }}

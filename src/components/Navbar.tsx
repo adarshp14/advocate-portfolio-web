@@ -43,13 +43,13 @@ const Navbar = () => {
   
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled || isBlogPath ? 'bg-white shadow-md py-2' : 'bg-white py-4'
+      isScrolled || isBlogPath ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <NavLink to="/" className="block">
-              <div className="font-playfair text-lawyer-navy">
+              <div className={`font-playfair ${isBlogPath || isScrolled ? 'text-lawyer-navy' : 'text-white'}`}>
                 <h1 className="text-xl md:text-2xl font-bold">Muhammad Obaid</h1>
                 <p className="text-xs md:text-sm text-lawyer-muted">Advocate & Legal Consultant</p>
               </div>
@@ -63,9 +63,9 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) => 
-                  isActive || (link.path === '/blog' && location.pathname.startsWith('/blog/')) 
-                    ? 'nav-link active' 
-                    : 'nav-link'
+                  `nav-link ${isActive || (link.path === '/blog' && location.pathname.startsWith('/blog/')) 
+                    ? 'active' 
+                    : ''} ${isBlogPath || isScrolled ? 'text-gray-800' : 'text-white'}`
                 }
               >
                 {link.name}
@@ -76,7 +76,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-lawyer-navy"
+            className={`md:hidden ${isBlogPath || isScrolled ? 'text-lawyer-navy' : 'text-white'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -93,9 +93,9 @@ const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => 
-                      isActive || (link.path === '/blog' && location.pathname.startsWith('/blog/'))
-                        ? 'nav-link active block py-2 px-4' 
-                        : 'nav-link block py-2 px-4'
+                      `nav-link block py-2 px-4 ${isActive || (link.path === '/blog' && location.pathname.startsWith('/blog/'))
+                        ? 'active' 
+                        : ''}`
                     }
                   >
                     {link.name}

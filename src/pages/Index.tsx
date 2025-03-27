@@ -29,8 +29,8 @@ const Index = () => {
   
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-center">
+      {/* Hero Section - Added mt-16 to create proper spacing after navbar */}
+      <section className="relative h-screen mt-16 flex items-center justify-center text-center">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 

@@ -37,15 +37,19 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
   
+  // Check if the current page has a dark background that would require white text
+  const hasDarkHero = location.pathname === '/';
+  const textColor = isScrolled ? 'text-lawyer-navy' : (hasDarkHero ? 'text-white' : 'text-lawyer-navy');
+  
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      isScrolled ? 'bg-white shadow-md py-2' : (hasDarkHero ? 'bg-transparent py-4' : 'bg-white py-4')
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <NavLink to="/" className="block">
-              <div className={`font-playfair ${isScrolled ? 'text-lawyer-navy' : 'text-white'}`}>
+              <div className={`font-playfair ${textColor}`}>
                 <h1 className="text-xl md:text-2xl font-bold">Muhammad Obaid</h1>
                 <p className="text-xs md:text-sm text-lawyer-muted">Advocate & Legal Consultant</p>
               </div>
@@ -59,7 +63,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) => 
-                  `nav-link ${isActive ? 'active' : ''} ${isScrolled ? 'text-gray-800' : 'text-white'}`
+                  `nav-link ${isActive ? 'active' : ''} ${textColor}`
                 }
               >
                 {link.name}
@@ -70,7 +74,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className={`md:hidden ${isScrolled ? 'text-lawyer-navy' : 'text-white'}`}
+            className={`md:hidden ${textColor}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >

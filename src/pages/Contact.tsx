@@ -56,11 +56,12 @@ const Contact = () => {
       to_name: 'Muhammad Obaid'
     };
     
+    // Replace 'service_id' with your actual EmailJS service ID
     emailjs.send(
-      'service_id', // You'll need to create a service ID in EmailJS
-      'template_f5yju3b', // Your template ID
+      'service_id', // Replace this with your actual EmailJS service ID
+      'template_f5yju3b', // Your template ID - already set
       templateParams,
-      'yo0m4VAbhpETK_JGa' // Your public key
+      'yo0m4VAbhpETK_JGa' // Your public key - already set
     )
       .then(() => {
         toast.success('Your message has been sent successfully!');

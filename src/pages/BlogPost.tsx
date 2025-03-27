@@ -204,6 +204,9 @@ const BlogPost = () => {
     // Trigger once on load
     handleScroll();
     
+    // Scroll to top when blog post loads
+    window.scrollTo(0, 0);
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, [post, navigate]);
   
@@ -217,7 +220,7 @@ const BlogPost = () => {
         <link rel="canonical" href={`/blog/${slug}`} />
       </Helmet>
       
-      {/* Hero Section */}
+      {/* Hero Section with adjusted padding to account for fixed header */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 

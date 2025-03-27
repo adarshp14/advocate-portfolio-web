@@ -132,6 +132,35 @@
   .nav-link.active {
     @apply text-lawyer-navy font-medium after:w-full;
   }
+
+  /* Blog-specific styles */
+  .blog-featured-image {
+    @apply h-64 md:h-80 w-full object-cover rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .blog-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .blog-post h2 {
+    @apply text-2xl font-bold text-lawyer-navy mt-8 mb-4;
+  }
+  
+  .blog-post h3 {
+    @apply text-xl font-semibold text-lawyer-navy mt-6 mb-3;
+  }
+  
+  .blog-post p {
+    @apply mb-4 text-gray-700;
+  }
+  
+  .blog-post ul, .blog-post ol {
+    @apply ml-5 mb-4;
+  }
+  
+  .blog-post li {
+    @apply mb-2;
+  }
 }
 
 /* Media Queries for Responsive Design */
@@ -159,6 +188,18 @@
   .nav-link {
     @apply text-sm;
   }
+  
+  .blog-featured-image {
+    @apply h-48;
+  }
+  
+  .blog-post h2 {
+    @apply text-xl;
+  }
+  
+  .blog-post h3 {
+    @apply text-lg;
+  }
 }
 
 @media (max-width: 768px) {
@@ -180,6 +221,10 @@
   
   .section-title {
     @apply text-2xl md:text-3xl;
+  }
+  
+  .blog-featured-image {
+    @apply h-56;
   }
 }
 
@@ -242,4 +287,33 @@
 .location-marker::before {
   content: '📍';
   @apply mr-1;
+}
+
+/* Blog specific styles */
+.blog-author {
+  @apply flex items-center;
+}
+
+.blog-author-image {
+  @apply w-10 h-10 rounded-full object-cover mr-3;
+}
+
+.blog-date {
+  @apply text-sm text-gray-500;
+}
+
+.blog-category {
+  @apply text-xs font-medium bg-gray-100 text-lawyer-navy px-2 py-1 rounded;
+}
+
+/* Fix for image display issues */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure the navbar is always on top */
+header.fixed {
+  z-index: 1000;
 }

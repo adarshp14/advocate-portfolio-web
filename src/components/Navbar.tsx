@@ -19,6 +19,9 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initial check on mount
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,8 +38,12 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  const isBlogPost = location.pathname.includes('/blog/');
+  
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'}`}>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled || isBlogPost ? 'bg-white shadow-md py-2' : 'bg-white py-4'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
@@ -55,7 +62,9 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) => 
-                  isActive ? 'nav-link active' : 'nav-link'
+                  isActive || (link.path === '/blog' && isBlogPost) 
+                    ? 'nav-link active' 
+                    : 'nav-link'
                 }
               >
                 {link.name}
@@ -83,7 +92,9 @@ const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => 
-                      isActive ? 'nav-link active block py-2 px-4' : 'nav-link block py-2 px-4'
+                      isActive || (link.path === '/blog' && isBlogPost)
+                        ? 'nav-link active block py-2 px-4' 
+                        : 'nav-link block py-2 px-4'
                     }
                   >
                     {link.name}

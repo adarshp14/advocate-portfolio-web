@@ -24,6 +24,8 @@ const Blog = () => {
     window.addEventListener('scroll', handleScroll);
     // Trigger once on load
     handleScroll();
+    // Scroll to top when blog page loads
+    window.scrollTo(0, 0);
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -66,7 +68,7 @@ const Blog = () => {
         <link rel="canonical" href="/blog" />
       </Helmet>
       
-      {/* Hero Section */}
+      {/* Hero Section with fixed height for consistency */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
@@ -102,11 +104,11 @@ const Blog = () => {
                     style={{ animationDelay: `${index * 150}ms` }}
                   >
                     <div className="md:flex">
-                      <div className="md:w-2/5">
+                      <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                         <img 
                           src={post.image} 
                           alt={post.title}
-                          className="w-full h-64 md:h-full object-cover"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                         />
                       </div>
                       <div className="md:w-3/5 p-6">

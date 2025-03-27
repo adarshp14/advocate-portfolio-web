@@ -11,7 +11,7 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const googleMapsApiKey = 'AIzaSyCtYfq_8frhNwXH5-Lax8GEpczIFZs6Ze8';
+  const googleMapsApiKey = 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE';
   
   useEffect(() => {
     const handleScroll = () => {

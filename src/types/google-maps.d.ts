@@ -2,6 +2,7 @@
 declare global {
   interface Window {
     initMap: (() => void) | null;
+    gm_authFailure: (() => void) | null;
     google: {
       maps: {
         Map: new (element: HTMLElement, options: any) => any;

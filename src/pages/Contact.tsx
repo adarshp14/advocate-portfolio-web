@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -46,17 +47,38 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success('Your message has been sent successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
+    // Prepare the template parameters
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      from_phone: formData.phone,
+      message: formData.message,
+      to_name: 'Muhammad Obaid' // This will appear in the email
+    };
+    
+    // Send the email using EmailJS
+    emailjs.send(
+      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+      'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+      templateParams,
+      'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+    )
+      .then(() => {
+        toast.success('Your message has been sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        toast.error('Failed to send your message. Please try again later.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      setIsSubmitting(false);
-    }, 1500);
   };
   
   return (

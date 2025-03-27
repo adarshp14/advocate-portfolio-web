@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import emailjs from 'emailjs-com';
@@ -46,12 +47,59 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Current timestamp for the email
+    const currentTime = new Date().toLocaleString();
+    
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       from_phone: formData.phone,
       message: formData.message,
-      to_name: 'Muhammad Obaid'
+      to_name: 'Muhammad Obaid',
+      time: currentTime,
+      // Include HTML template
+      html_content: `
+        <div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
+          <div>A message by ${formData.name} has been received. Kindly respond at your earliest convenience.</div>
+          <div
+            style="
+              margin-top: 20px;
+              padding: 15px 0;
+              border-width: 1px 0;
+              border-style: dashed;
+              border-color: lightgrey;
+            "
+          >
+            <table role="presentation">
+              <tr>
+                <td style="vertical-align: top">
+                  <div
+                    style="
+                      padding: 6px 10px;
+                      margin: 0 10px;
+                      background-color: aliceblue;
+                      border-radius: 5px;
+                      font-size: 26px;
+                    "
+                    role="img"
+                  >
+                    &#x1F464;
+                  </div>
+                </td>
+                <td style="vertical-align: top">
+                  <div style="color: #2c3e50; font-size: 16px">
+                    <strong>${formData.name}</strong>
+                  </div>
+                  <div style="color: #cccccc; font-size: 13px">${currentTime}</div>
+                  <p style="font-size: 16px">${formData.message}</p>
+                  <p style="font-size: 14px"><strong>Email:</strong> ${formData.email}</p>
+                  <p style="font-size: 14px"><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      `
     };
     
     emailjs.send(

@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import emailjs from 'emailjs-com';
+import GoogleMap from '../components/GoogleMap';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
   
   // Animation on scroll effect
   useEffect(() => {
@@ -29,7 +30,6 @@ const Contact = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Trigger once on load
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -47,21 +47,19 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Prepare the template parameters
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       from_phone: formData.phone,
       message: formData.message,
-      to_name: 'Muhammad Obaid' // This will appear in the email
+      to_name: 'Muhammad Obaid'
     };
     
-    // Send the email using EmailJS
     emailjs.send(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-      'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+      'YOUR_SERVICE_ID',
+      'YOUR_TEMPLATE_ID',
       templateParams,
-      'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      'YOUR_PUBLIC_KEY'
     )
       .then(() => {
         toast.success('Your message has been sent successfully!');
@@ -81,9 +79,20 @@ const Contact = () => {
       });
   };
   
+  const handleApiKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGoogleMapsApiKey(e.target.value);
+    localStorage.setItem('googleMapsApiKey', e.target.value);
+  };
+  
+  useEffect(() => {
+    const savedKey = localStorage.getItem('googleMapsApiKey');
+    if (savedKey) {
+      setGoogleMapsApiKey(savedKey);
+    }
+  }, []);
+  
   return (
     <>
-      {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
@@ -106,12 +115,10 @@ const Contact = () => {
         </div>
       </section>
       
-      {/* Contact Content */}
       <section className="py-16 -mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-xl overflow-hidden">
             <div className="md:flex">
-              {/* Contact Info Section */}
               <div className="md:w-2/5 bg-lawyer-navy p-8 md:p-12">
                 <div className="opacity-0 reveal">
                   <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
@@ -147,7 +154,6 @@ const Contact = () => {
                 </div>
               </div>
               
-              {/* Contact Form */}
               <div className="md:w-3/5 p-8 md:p-12">
                 <div className="opacity-0 reveal">
                   <h2 className="section-title pb-3 mb-6">Send a Message</h2>
@@ -244,12 +250,38 @@ const Contact = () => {
         </div>
       </section>
       
-      {/* Google Map (Placeholder) */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-lg shadow-lg opacity-0 reveal">
-            <div className="bg-gray-200 h-96 flex items-center justify-center">
-              <p className="text-gray-700 text-xl font-medium">Google Map Placeholder - Calcutta High Court Location</p>
+          <div className="opacity-0 reveal">
+            <h2 className="section-title pb-3 mb-8">Our Location</h2>
+            
+            {!googleMapsApiKey ? (
+              <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
+                <p className="text-gray-700 mb-4">Please enter your Google Maps API key to view the map:</p>
+                <input
+                  type="text"
+                  placeholder="Enter Google Maps API Key"
+                  value={googleMapsApiKey}
+                  onChange={handleApiKeyChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:border-transparent"
+                />
+                <p className="text-sm text-gray-500 mt-2">
+                  You can get an API key from the <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener noreferrer" className="text-lawyer-navy underline">Google Maps Platform</a>. The key will be saved in your browser for convenience.
+                </p>
+              </div>
+            ) : null}
+            
+            <div className="overflow-hidden rounded-lg shadow-lg h-96">
+              {googleMapsApiKey ? (
+                <GoogleMap 
+                  address="Calcutta High Court, Kolkata, West Bengal, India" 
+                  apiKey={googleMapsApiKey}
+                />
+              ) : (
+                <div className="bg-gray-200 h-full flex items-center justify-center">
+                  <p className="text-gray-700 text-xl font-medium">Enter your Google Maps API key above to view the map</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

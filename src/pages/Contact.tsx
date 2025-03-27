@@ -159,9 +159,18 @@ const Contact = () => {
                   <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
                   <div className="space-y-6 text-gray-300">
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Address</h3>
-                      <p>Calcutta High Court</p>
-                      <p>Kolkata, West Bengal</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">Chambers/Offices</h3>
+                      <div className="mb-4">
+                        <p className="font-medium text-lawyer-gold mb-1">Kolkata Chamber:</p>
+                        <p>2ND FLOOR (BACK SIDE),</p>
+                        <p>7A KIRAN SHANKAR ROY ROAD</p>
+                        <p>KOLKATA, WEST BENGAL, PIN 700001</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-lawyer-gold mb-1">Howrah Chamber/Residence:</p>
+                        <p>47 PILKHANA 3RD LANE,</p>
+                        <p>HOWRAH, WEST BENGAL, PIN 711101</p>
+                      </div>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Email</h3>

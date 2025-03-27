@@ -48,8 +48,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-3">Contact</h4>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>Calcutta High Court</p>
-              <p>Kolkata, West Bengal</p>
+              <p><span className="font-medium text-lawyer-gold">Kolkata:</span> 7A Kiran Shankar Roy Road</p>
+              <p>Kolkata, West Bengal, 700001</p>
+              <p><span className="font-medium text-lawyer-gold">Howrah:</span> 47 Pilkhana 3rd Lane</p>
+              <p>Howrah, West Bengal, 711101</p>
               <p>Email: obaidmu018@gmail.com</p>
               <p>Phone: +91-9123058260</p>
             </address>

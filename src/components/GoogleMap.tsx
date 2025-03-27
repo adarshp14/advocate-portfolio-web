@@ -10,21 +10,28 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    // Check if script is already loaded to avoid duplicates
+    const existingScript = document.getElementById('google-maps-script');
+    if (existingScript) {
+      document.head.removeChild(existingScript);
+    }
+    
     // Load the Google Maps script dynamically
     const script = document.createElement('script');
+    script.id = 'google-maps-script';
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
     script.async = true;
     script.defer = true;
     
     // Define the callback function that Google Maps will call
     window.initMap = () => {
-      if (!mapRef.current) return;
+      if (!mapRef.current || !window.google) return;
       
       // Use the Geocoding service to convert address to coordinates
-      const geocoder = new google.maps.Geocoder();
+      const geocoder = new window.google.maps.Geocoder();
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK' && results && results[0]) {
-          const map = new google.maps.Map(mapRef.current, {
+          const map = new window.google.maps.Map(mapRef.current, {
             center: results[0].geometry.location,
             zoom: 15,
             mapTypeControl: true,
@@ -33,21 +40,21 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
           });
           
           // Add a marker for the location
-          new google.maps.Marker({
+          new window.google.maps.Marker({
             map,
             position: results[0].geometry.location,
-            animation: google.maps.Animation.DROP,
+            animation: window.google.maps.Animation.DROP,
           });
         } else {
           console.error('Geocoding failed:', status);
           // Fallback to a default location (Calcutta High Court)
           const defaultPosition = { lat: 22.5698, lng: 88.3468 }; // Approximate coordinates for Calcutta High Court
-          const map = new google.maps.Map(mapRef.current, {
+          const map = new window.google.maps.Map(mapRef.current, {
             center: defaultPosition,
             zoom: 15,
           });
           
-          new google.maps.Marker({
+          new window.google.maps.Marker({
             map,
             position: defaultPosition,
           });
@@ -61,7 +68,9 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
     // Clean up
     return () => {
       window.initMap = null;
-      document.head.removeChild(script);
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
   }, [address, apiKey]);
   

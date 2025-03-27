@@ -26,7 +26,7 @@ const Footer = () => {
               <h3 className="text-2xl font-playfair font-bold mb-3">Muhammad Obaid</h3>
               <p className="text-gray-300 mb-4">Trusted Legal Services in India</p>
               <p className="text-gray-300 text-sm">
-                Providing expert legal counsel and representation at the Calcutta High Court.
+                Providing representation at Hon'ble Calcutta High Court and learned trial courts across the state of West Bengal.
               </p>
             </div>
           </div>

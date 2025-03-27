@@ -133,3 +133,26 @@
     @apply text-lawyer-navy font-medium after:w-full;
   }
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 640px) {
+  .section-title {
+    @apply text-2xl;
+  }
+  
+  .btn-primary, .btn-secondary {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    @apply py-8;
+  }
+}
+
+@media (max-width: 1024px) {
+  .glass-card {
+    @apply p-4;
+  }
+}

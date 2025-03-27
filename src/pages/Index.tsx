@@ -33,7 +33,60 @@ const Index = () => {
       <Helmet>
         <title>Muhammad Obaid - Trusted Lawyer in Kolkata & Howrah, India</title>
         <meta name="description" content="Muhammad Obaid provides expert legal representation at Calcutta High Court and trial courts across West Bengal. Book a consultation today!" />
-        <link rel="canonical" href="/" />
+        <link rel="canonical" href="https://advocate-obaid.vercel.app/" />
+        <meta property="og:url" content="https://advocate-obaid.vercel.app/" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "LegalService",
+              "name": "Muhammad Obaid - Legal Practice",
+              "description": "Expert legal representation at Calcutta High Court and trial courts across West Bengal",
+              "url": "https://advocate-obaid.vercel.app/",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Kolkata & Howrah",
+                "addressRegion": "West Bengal",
+                "addressCountry": "India"
+              },
+              "telephone": "+91-9123058260",
+              "email": "obaidmu018@gmail.com",
+              "serviceArea": "Kolkata, Howrah, West Bengal",
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "serviceUrl": "https://advocate-obaid.vercel.app/contact",
+                "serviceSmsNumber": "+91-9123058260"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Legal Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Civil Litigation"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Criminal Defense"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Arbitration & ADR"
+                    }
+                  }
+                ]
+              }
+            }
+          `}
+        </script>
       </Helmet>
       
       {/* Hero Section - Added mt-16 to create proper spacing after navbar */}
@@ -75,7 +128,7 @@ const Index = () => {
               />
             </div>
             <div className="md:w-1/2 opacity-0 reveal">
-              <h2 className="section-title pb-3">About Me</h2>
+              <h2 className="section-title pb-3">About Me - Lawyer in Kolkata</h2>
               <p className="text-lg text-gray-700 mb-6">
                 Welcome to Muhammad Obaid's legal practice. I am a dedicated and experienced lawyer practicing at the Calcutta High Court and district courts across West Bengal. With specialized expertise in civil and criminal matters, I provide personalized legal solutions tailored to each client's needs.
               </p>

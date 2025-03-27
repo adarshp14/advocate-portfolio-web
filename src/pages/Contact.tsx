@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import emailjs from 'emailjs-com';
@@ -12,9 +11,8 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
+  const googleMapsApiKey = 'AIzaSyCtYfq_8frhNwXH5-Lax8GEpczIFZs6Ze8';
   
-  // Animation on scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const elements = document.querySelectorAll('.reveal');
@@ -56,7 +54,6 @@ const Contact = () => {
       to_name: 'Muhammad Obaid'
     };
     
-    // Replace 'service_id' with your actual EmailJS service ID
     emailjs.send(
       'service_id', // Replace this with your actual EmailJS service ID
       'template_f5yju3b', // Your template ID - already set
@@ -80,18 +77,6 @@ const Contact = () => {
         setIsSubmitting(false);
       });
   };
-  
-  const handleApiKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGoogleMapsApiKey(e.target.value);
-    localStorage.setItem('googleMapsApiKey', e.target.value);
-  };
-  
-  useEffect(() => {
-    const savedKey = localStorage.getItem('googleMapsApiKey');
-    if (savedKey) {
-      setGoogleMapsApiKey(savedKey);
-    }
-  }, []);
   
   return (
     <>
@@ -257,33 +242,11 @@ const Contact = () => {
           <div className="opacity-0 reveal">
             <h2 className="section-title pb-3 mb-8">Our Location</h2>
             
-            {!googleMapsApiKey ? (
-              <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
-                <p className="text-gray-700 mb-4">Please enter your Google Maps API key to view the map:</p>
-                <input
-                  type="text"
-                  placeholder="Enter Google Maps API Key"
-                  value={googleMapsApiKey}
-                  onChange={handleApiKeyChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:border-transparent"
-                />
-                <p className="text-sm text-gray-500 mt-2">
-                  You can get an API key from the <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener noreferrer" className="text-lawyer-navy underline">Google Maps Platform</a>. The key will be saved in your browser for convenience.
-                </p>
-              </div>
-            ) : null}
-            
             <div className="overflow-hidden rounded-lg shadow-lg h-96">
-              {googleMapsApiKey ? (
-                <GoogleMap 
-                  address="Calcutta High Court, Kolkata, West Bengal, India" 
-                  apiKey={googleMapsApiKey}
-                />
-              ) : (
-                <div className="bg-gray-200 h-full flex items-center justify-center">
-                  <p className="text-gray-700 text-xl font-medium">Enter your Google Maps API key above to view the map</p>
-                </div>
-              )}
+              <GoogleMap 
+                address="Calcutta High Court, Kolkata, West Bengal, India" 
+                apiKey={googleMapsApiKey}
+              />
             </div>
           </div>
         </div>

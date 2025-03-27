@@ -39,7 +39,8 @@ const Navbar = () => {
   
   // Check if the current page has a dark background that would require white text
   const hasDarkHero = location.pathname === '/';
-  const textColor = isScrolled ? 'text-lawyer-navy' : (hasDarkHero ? 'text-white' : 'text-lawyer-navy');
+  // Always use navy text when at the very top of homepage or when scrolled
+  const textColor = isScrolled || !hasDarkHero ? 'text-lawyer-navy' : 'text-white';
   
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${

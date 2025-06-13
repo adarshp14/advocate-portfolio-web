@@ -23,10 +23,10 @@ const LegalDisclaimer = () => {
         <DialogHeader className="text-center pb-4">
           <div className="mb-4">
             <h1 className="text-2xl font-bold text-lawyer-navy font-playfair mb-2">
-              MUHAMMAD OBAID
+              ADVOCATE MUHAMMAD OBAID
             </h1>
             <p className="text-sm text-lawyer-navy font-medium">
-              ADVOCATE & LEGAL CONSULTANT
+              LEGAL CONSULTANT
             </p>
           </div>
           <DialogTitle className="text-xl font-bold text-lawyer-navy">

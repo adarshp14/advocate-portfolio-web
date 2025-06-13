@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LegalDisclaimer from "./components/LegalDisclaimer";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
+          <LegalDisclaimer />
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow pt-24">

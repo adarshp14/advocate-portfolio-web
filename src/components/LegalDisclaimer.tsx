@@ -38,21 +38,21 @@ const LegalDisclaimer = () => {
           <p>
             The Bar Council of India does not permit advertisement or solicitation by advocates 
             in any form or manner. By accessing this website, you acknowledge and confirm that 
-            you are seeking information relating to Muhammad Obaid's legal practice of your own 
+            you are seeking information relating to Advocate Muhammad Obaid's legal practice of your own 
             accord and that there has been no form of solicitation, advertisement or inducement 
-            by Muhammad Obaid or his associates.
+            by Advocate Muhammad Obaid or his associates.
           </p>
           
           <p>
             The content of this website is for informational purposes only and should not be 
             interpreted as soliciting or advertisement. No material/information provided on this 
-            website should be construed as legal advice. Muhammad Obaid shall not be liable for 
+            website should be construed as legal advice. Advocate Muhammad Obaid shall not be liable for 
             consequences of any action taken by relying on the material/information provided on 
             this website.
           </p>
           
           <p>
-            The contents of this website are the intellectual property of Muhammad Obaid. The 
+            The contents of this website are the intellectual property of Advocate Muhammad Obaid. The 
             information provided herein is intended for general informational purposes and should 
             not be used as a substitute for consultation with professional legal advisors.
           </p>

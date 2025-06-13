@@ -107,7 +107,7 @@ const Index = () => {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Muhammad Obaid - Legal Solutions in Kolkata & Howrah
+            Advocate Muhammad Obaid - Legal Solutions in Kolkata & Howrah
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8">
             Trusted legal representation at Calcutta High Court and district courts across West Bengal. Dedicated to excellence and committed to your success.

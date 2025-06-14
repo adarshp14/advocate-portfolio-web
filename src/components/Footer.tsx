@@ -3,10 +3,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
-const Footer = () => {
+interface FooterLink {
+  name: string;
+  path: string;
+}
+
+const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
-  const footerLinks = [
+  const footerLinks: FooterLink[] = [
     { name: "Home", path: "/" },
     { name: "About Me", path: "/about" },
     { name: "Services", path: "/services" },

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-const LegalDisclaimer = () => {
-  const [isOpen, setIsOpen] = useState(true);
+const LegalDisclaimer: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const handleAccept = () => {
     setIsOpen(false);
@@ -26,7 +26,7 @@ const LegalDisclaimer = () => {
           </DialogTitle>
         </DialogHeader>
         
-        <div className="space-y-4 text-gray-700 text-sm leading-relaxed">
+        <div className="space-y-4 text-gray-700 legal-disclaimer-text">
           <p>
             The Bar Council of India does not permit advertisement or solicitation by advocates 
             in any form or manner. By accessing this website, you acknowledge and confirm that 

@@ -101,11 +101,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-lawyer-navy hover:bg-opacity-90 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply bg-lawyer-navy hover:bg-lawyer-navy/90 text-white px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-lawyer-gold hover:bg-opacity-90 text-lawyer-navy px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply bg-lawyer-gold hover:bg-lawyer-gold/90 text-lawyer-navy px-6 py-3 rounded-md font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-lawyer-gold focus:ring-offset-2;
   }
   
   .section-title {
@@ -117,7 +117,11 @@
   }
   
   .glass-card {
-    @apply bg-white bg-opacity-80 backdrop-blur-sm rounded-lg shadow-lg p-6 border border-gray-100;
+    @apply bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .card-primary {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-100 hover:shadow-lg transition-all duration-300;
   }
   
   .page-container {
@@ -125,11 +129,27 @@
   }
   
   .nav-link {
-    @apply relative transition-colors duration-300 text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-[#FFD700] after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full;
+    @apply relative transition-colors duration-300 text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-lawyer-gold after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full;
   }
   
   .nav-link.active {
     @apply font-medium after:w-full;
+  }
+  
+  .link-primary {
+    @apply text-lawyer-navy hover:text-lawyer-gold transition-colors duration-300 font-medium inline-flex items-center;
+  }
+  
+  .link-primary svg {
+    @apply ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:ring-offset-2 focus:border-transparent transition-colors duration-200;
+  }
+  
+  .form-textarea {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:ring-offset-2 focus:border-transparent transition-colors duration-200 resize-vertical;
   }
 
   /* Blog-specific styles */
@@ -179,26 +199,18 @@
   }
 }
 
-/* Media Queries for Responsive Design */
+/* Responsive Design Utilities */
 @media (max-width: 640px) {
   .section-title {
-    @apply text-2xl;
+    @apply text-xl md:text-2xl;
   }
   
   .btn-primary, .btn-secondary {
-    @apply px-4 py-2 text-sm;
-  }
-  
-  .hero-text h1 {
-    @apply text-3xl;
-  }
-  
-  .hero-text p {
-    @apply text-base;
+    @apply px-4 py-2.5 text-sm;
   }
   
   .glass-card {
-    @apply p-4;
+    @apply p-3 sm:p-4;
   }
   
   .nav-link {
@@ -210,11 +222,26 @@
   }
   
   .blog-post h2 {
-    @apply text-xl;
+    @apply text-lg sm:text-xl;
   }
   
   .blog-post h3 {
-    @apply text-lg;
+    @apply text-base sm:text-lg;
+  }
+  
+  /* Improve form readability on mobile */
+  input, textarea, select {
+    @apply text-base; /* Prevents zoom on iOS */
+  }
+  
+  /* Better spacing for mobile */
+  .page-container {
+    @apply px-3 py-6;
+  }
+  
+  /* Legal disclaimer text size fix */
+  .legal-disclaimer-text {
+    @apply text-sm leading-relaxed;
   }
 }
 
@@ -227,16 +254,8 @@
     @apply w-12;
   }
   
-  .hero-text h1 {
-    @apply text-4xl;
-  }
-  
   .glass-card {
     @apply p-5;
-  }
-  
-  .section-title {
-    @apply text-2xl md:text-3xl;
   }
   
   .blog-featured-image {
@@ -244,25 +263,12 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .glass-card {
-    @apply p-4;
-  }
-  
-  .section-title {
-    @apply text-3xl;
-  }
-  
-  .page-container {
-    @apply px-4 py-16;
-  }
-}
-
-/* Animation for revealing elements */
+/* Optimized animations */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.animate-fade-in {
@@ -270,14 +276,19 @@
   transform: translateY(0);
 }
 
-/* Animation for mobile menu */
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.animate-fade-in {
+  animation: fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out forwards;
+@keyframes fade-in {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
 /* Special headings for SEO */

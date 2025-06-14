@@ -202,15 +202,15 @@
 /* Responsive Design Utilities */
 @media (max-width: 640px) {
   .section-title {
-    @apply text-2xl;
+    @apply text-xl md:text-2xl;
   }
   
   .btn-primary, .btn-secondary {
-    @apply px-4 py-2 text-sm;
+    @apply px-4 py-2.5 text-sm;
   }
   
   .glass-card {
-    @apply p-4;
+    @apply p-3 sm:p-4;
   }
   
   .nav-link {
@@ -222,11 +222,26 @@
   }
   
   .blog-post h2 {
-    @apply text-xl;
+    @apply text-lg sm:text-xl;
   }
   
   .blog-post h3 {
-    @apply text-lg;
+    @apply text-base sm:text-lg;
+  }
+  
+  /* Improve form readability on mobile */
+  input, textarea, select {
+    @apply text-base; /* Prevents zoom on iOS */
+  }
+  
+  /* Better spacing for mobile */
+  .page-container {
+    @apply px-3 py-6;
+  }
+  
+  /* Legal disclaimer text size fix */
+  .legal-disclaimer-text {
+    @apply text-sm leading-relaxed;
   }
 }
 

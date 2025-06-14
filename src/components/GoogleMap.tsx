@@ -1,14 +1,20 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 
 interface GoogleMapProps {
   address: string;
   apiKey: string;
 }
 
-const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
+const GoogleMap: React.FC<GoogleMapProps> = React.memo(({ address, apiKey }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapError, setMapError] = useState<string | null>(null);
+  
+  // Memoize the script source URL to avoid recreation
+  const scriptSrc = useMemo(() => 
+    `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&loading=async`,
+    [apiKey]
+  );
   
   useEffect(() => {
     // Check if script is already loaded to avoid duplicates
@@ -28,7 +34,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
     // Load the Google Maps script dynamically
     const script = document.createElement('script');
     script.id = 'google-maps-script';
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&loading=async`;
+    script.src = scriptSrc;
     script.async = true;
     script.defer = true;
     
@@ -61,8 +67,8 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
               animation: window.google.maps.Animation.DROP,
             });
           } else {
-            console.error('Geocoding failed:', status);
-            setMapError(`Geocoding failed: ${status}. Using default location.`);
+            // Handle geocoding failure silently and show user-friendly message
+            setMapError(`Unable to locate address. Using default location.`);
             
             // Fallback to a default location (Calcutta High Court)
             const defaultPosition = { lat: 22.5698, lng: 88.3468 }; // Approximate coordinates for Calcutta High Court
@@ -78,8 +84,8 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
           }
         });
       } catch (error) {
-        console.error('Error initializing map:', error);
-        setMapError('Error initializing Google Maps. Please check the console for details.');
+        // Handle map initialization error with user-friendly message
+        setMapError('Unable to load map at this time. Please try refreshing the page.');
       }
     };
     
@@ -102,7 +108,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
         script.parentNode.removeChild(script);
       }
     };
-  }, [address, apiKey]);
+  }, [address, apiKey, scriptSrc]);
   
   return (
     <div className="w-full h-full relative">
@@ -126,6 +132,6 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ address, apiKey }) => {
       )}
     </div>
   );
-};
+});
 
 export default GoogleMap;

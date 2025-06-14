@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface ConsultationButtonProps {
@@ -7,13 +7,13 @@ interface ConsultationButtonProps {
   customStyle?: string;
 }
 
-const ConsultationButton: React.FC<ConsultationButtonProps> = ({ 
+const ConsultationButton: React.FC<ConsultationButtonProps> = React.memo(({ 
   fullWidth = false, 
   customStyle 
 }) => {
   const navigate = useNavigate();
   
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     navigate('/contact');
     
     // Scroll to contact form if already on contact page
@@ -23,7 +23,7 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = ({
         formElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  };
+  }, [navigate]);
   
   return (
     <button 
@@ -33,6 +33,6 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = ({
       Book a Consultation
     </button>
   );
-};
+});
 
 export default ConsultationButton;

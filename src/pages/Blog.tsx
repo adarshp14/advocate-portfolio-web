@@ -1,72 +1,122 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ConsultationButton from '../components/ConsultationButton';
 import { Card, CardContent } from '@/components/ui/card';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { blogPosts } from '../data/blog';
 
-const Blog = () => {
-  // Animation on scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.reveal');
-      
-      elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('animate-fade-in');
-          element.classList.remove('opacity-0');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Trigger once on load
-    handleScroll();
-    // Scroll to top when blog page loads
-    window.scrollTo(0, 0);
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const Blog: React.FC = () => {
+  // Use custom hook for scroll animations
+  useScrollAnimation();
   
-  const blogPosts = [
-    {
-      id: 1,
-      title: "How to Find the Best Lawyer in Kolkata",
-      slug: "how-to-find-best-lawyer-kolkata",
-      excerpt: "Navigating the legal landscape in Kolkata can be challenging. Learn key factors to consider when choosing the right advocate for your legal needs in West Bengal.",
-      date: "August 15, 2023",
-      image: "/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png",
-      categories: ["Legal Advice", "Kolkata"]
-    },
-    {
-      id: 2,
-      title: "Key Civil Litigation Laws in India Explained",
-      slug: "civil-litigation-laws-india-explained",
-      excerpt: "Understanding the fundamentals of civil litigation in India. This guide breaks down essential laws and procedures for cases in the Calcutta High Court and beyond.",
-      date: "September 22, 2023",
-      image: "/lovable-uploads/4e94bb51-40a2-456b-8dfd-8eeb8f380002.png",
-      categories: ["Civil Law", "Legal Education"]
-    },
-    {
-      id: 3,
-      title: "Avoid These Legal Mistakes in Kolkata and Howrah",
-      slug: "avoid-legal-mistakes-kolkata-howrah",
-      excerpt: "Common legal pitfalls that residents and businesses in Kolkata and Howrah should be aware of. Learn how to protect your interests and navigate legal challenges.",
-      date: "October 10, 2023",
-      image: "/lovable-uploads/96b51200-5773-42b6-ad91-3ba7c7d42bd0.png",
-      categories: ["Legal Tips", "Risk Management"]
-    }
-  ];
+  // Scroll to top when blog page loads
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <>
       <Helmet>
         <title>Legal Blog | Muhammad Obaid - Lawyer in Kolkata & Howrah</title>
         <meta name="description" content="Expert legal insights and advice from Muhammad Obaid, Advocate at Calcutta High Court. Browse articles on civil litigation, criminal defense, and legal tips for Kolkata and Howrah residents." />
-        <link rel="canonical" href="/blog" />
+        <meta name="keywords" content="legal blog Kolkata, lawyer articles West Bengal, legal advice blog, civil litigation insights, criminal defense tips, property law guidance, Muhammad Obaid blog" />
+        <meta name="author" content="Muhammad Obaid" />
+        <link rel="canonical" href="https://advocate-obaid.vercel.app/blog" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="3 days" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Legal Blog | Muhammad Obaid - Lawyer in Kolkata & Howrah" />
+        <meta property="og:description" content="Expert legal insights and advice from Muhammad Obaid, Advocate at Calcutta High Court. Browse articles on civil litigation, criminal defense, and legal tips." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://advocate-obaid.vercel.app/blog" />
+        <meta property="og:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ObaidAdvocate" />
+        <meta name="twitter:title" content="Legal Blog | Muhammad Obaid - Lawyer in Kolkata & Howrah" />
+        <meta name="twitter:description" content="Expert legal insights and advice from Muhammad Obaid, Advocate at Calcutta High Court." />
+        <meta name="twitter:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Structured Data for Blog */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              "name": "Muhammad Obaid Legal Blog",
+              "description": "Expert legal insights and advice from Muhammad Obaid, Advocate at Calcutta High Court",
+              "url": "https://advocate-obaid.vercel.app/blog",
+              "author": {
+                "@type": "Person",
+                "name": "Muhammad Obaid",
+                "jobTitle": "Advocate",
+                "affiliation": {
+                  "@type": "Organization",
+                  "name": "Calcutta High Court"
+                }
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Muhammad Obaid Legal Practice",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png"
+                }
+              },
+              "inLanguage": "en-IN",
+              "about": [
+                {
+                  "@type": "Thing",
+                  "name": "Legal Services"
+                },
+                {
+                  "@type": "Thing",
+                  "name": "Civil Litigation"
+                },
+                {
+                  "@type": "Thing",
+                  "name": "Criminal Defense"
+                }
+              ],
+              "blogPost": [
+                {
+                  "@type": "BlogPosting",
+                  "headline": "How to Find the Best Lawyer in Kolkata",
+                  "url": "https://advocate-obaid.vercel.app/blog/how-to-find-best-lawyer-kolkata",
+                  "datePublished": "2023-08-15",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Muhammad Obaid"
+                  }
+                },
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Key Civil Litigation Laws in India Explained",
+                  "url": "https://advocate-obaid.vercel.app/blog/civil-litigation-laws-india-explained",
+                  "datePublished": "2023-09-22",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Muhammad Obaid"
+                  }
+                },
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Avoid These Legal Mistakes in Kolkata and Howrah",
+                  "url": "https://advocate-obaid.vercel.app/blog/avoid-legal-mistakes-kolkata-howrah",
+                  "datePublished": "2023-10-10",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Muhammad Obaid"
+                  }
+                }
+              ]
+            }
+          `}
+        </script>
       </Helmet>
       
       {/* Hero Section with fixed height for consistency */}

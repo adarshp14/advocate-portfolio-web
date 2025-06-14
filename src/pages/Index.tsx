@@ -5,6 +5,7 @@ import ConsultationButton from '../components/ConsultationButton';
 import OptimizedImage from '../components/OptimizedImage';
 import { Helmet } from 'react-helmet-async';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { whyChooseItems, servicesPreviews } from '../data/services';
 
 const Index: React.FC = () => {
   // Use custom hook for scroll animations
@@ -88,10 +89,10 @@ const Index: React.FC = () => {
         <div className="absolute inset-0 bg-lawyer-navy bg-opacity-75"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Advocate Muhammad Obaid - Legal Solutions in Kolkata & Howrah
           </h1>
-          <p className="text-xl md:text-2xl text-white mb-8">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed">
             Trusted legal representation at Calcutta High Court and district courts across West Bengal. Dedicated to excellence and committed to your success.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -108,10 +109,11 @@ const Index: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0 md:pr-12">
-              <img 
+              <OptimizedImage 
                 src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
                 alt="Muhammad Obaid, Advocate at Calcutta High Court" 
                 className="rounded-lg shadow-xl w-full max-w-md mx-auto"
+                aspectRatio="3/4"
               />
             </div>
             <div className="md:w-1/2 opacity-0 reveal">
@@ -144,23 +146,7 @@ const Index: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Experienced Advocate",
-                description: "Three years of practice at the Calcutta High Court, with a track record of successful cases across West Bengal.",
-                delay: 100
-              },
-              {
-                title: "Client-Focused Legal Services",
-                description: "Your needs and objectives are my priority. I ensure personalized attention to every legal case in Kolkata and Howrah.",
-                delay: 200
-              },
-              {
-                title: "Specialized Legal Expertise",
-                description: "Expert in civil and criminal matters, arbitration, and Alternative Dispute Resolution (ADR) across West Bengal courts.",
-                delay: 300
-              }
-            ].map((item, index) => (
+            {whyChooseItems.map((item, index) => (
               <div 
                 key={index} 
                 className="glass-card text-center opacity-0 reveal"
@@ -227,60 +213,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Recent Blog Posts Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 opacity-0 reveal">
-            <h2 className="section-title inline-block pb-3 mb-4 after:left-1/2 after:-translate-x-1/2">Legal Insights & Articles</h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Stay informed with the latest legal updates and advice for Kolkata and Howrah residents.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "How to Find the Best Lawyer in Kolkata",
-                excerpt: "Discover the key factors to consider when searching for legal representation in Kolkata and Howrah.",
-                slug: "/blog/how-to-find-best-lawyer-kolkata",
-                date: "November 16, 2023"
-              },
-              {
-                title: "Civil Litigation Laws in India Explained",
-                excerpt: "A comprehensive guide to understanding civil litigation processes in West Bengal courts.",
-                slug: "/blog/civil-litigation-laws-india-explained",
-                date: "November 10, 2023"
-              },
-              {
-                title: "Avoid These Legal Mistakes in Kolkata & Howrah",
-                excerpt: "Common legal pitfalls and how to avoid them when dealing with legal matters in West Bengal.",
-                slug: "/blog/avoid-legal-mistakes-kolkata-howrah",
-                date: "November 5, 2023"
-              }
-            ].map((post, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden opacity-0 reveal">
-                <div className="p-6">
-                  <p className="text-sm text-lawyer-gold mb-2">{post.date}</p>
-                  <h3 className="text-xl font-bold text-lawyer-navy mb-3">{post.title}</h3>
-                  <p className="text-gray-700 mb-4">{post.excerpt}</p>
-                  <Link to={post.slug} className="link-primary">
-                    Read Full Article
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-10 text-center opacity-0 reveal">
-            <Link to="/blog" className="btn-primary">
-              View All Blog Posts
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Location Section */}
       <section className="py-16 bg-white">

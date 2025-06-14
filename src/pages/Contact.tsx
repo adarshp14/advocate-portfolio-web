@@ -1,9 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { toast } from 'sonner';
 import { Helmet } from 'react-helmet-async';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import GoogleMap from '../components/GoogleMap';
+import OptimizedImage from '../components/OptimizedImage';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface FormData {
@@ -39,17 +40,21 @@ const Contact: React.FC = () => {
   // Use custom hook for scroll animations
   useScrollAnimation();
   
-  // Environment variables with fallbacks
-  const emailjsConfig = {
+  // Memoize environment variables with fallbacks
+  const emailjsConfig = useMemo(() => ({
     serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_6managk',
     templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_f5yju3b',
     publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'yo0m4VAbhpETK_JGa'
-  };
-  const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE';
+  }), []);
+  
+  const googleMapsApiKey = useMemo(() => 
+    import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE',
+    []
+  );
   
   
-  // Validation functions
-  const validateField = (name: string, value: string) => {
+  // Memoized validation functions
+  const validateField = useCallback((name: string, value: string) => {
     let error = '';
     
     switch (name) {
@@ -84,14 +89,14 @@ const Contact: React.FC = () => {
     }
     
     return error;
-  };
+  }, []);
 
-  const sanitizeInput = (value: string) => {
+  const sanitizeInput = useCallback((value: string) => {
     // Basic HTML sanitization
     return value.replace(/<[^>]*>/g, '').trim();
-  };
+  }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     const sanitizedValue = sanitizeInput(value);
     
@@ -106,9 +111,9 @@ const Contact: React.FC = () => {
       ...prev,
       [name]: error
     }));
-  };
+  }, [sanitizeInput, validateField]);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     
     // Rate limiting - prevent submissions within 30 seconds
@@ -214,13 +219,13 @@ const Contact: React.FC = () => {
         });
       })
       .catch((error) => {
-        console.error('Error sending email:', error);
+        // Handle email sending error with user-friendly message
         toast.error('Failed to send your message. Please try again later.');
       })
       .finally(() => {
         setIsSubmitting(false);
       });
-  };
+  }, [formData, lastSubmissionTime, validateField, emailjsConfig]);
   
   return (
     <>
@@ -371,8 +376,8 @@ const Contact: React.FC = () => {
                 <div className="mt-12 opacity-0 reveal">
                   <img 
                     src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Legal consultation" 
-                    className="rounded-lg shadow-lg"
+                    alt="Professional legal consultation meeting at Muhammad Obaid's law office in Kolkata" 
+                    className="rounded-lg shadow-lg w-full h-auto"
                   />
                 </div>
               </div>
@@ -384,7 +389,7 @@ const Contact: React.FC = () => {
                     Please fill out the form below to get in touch. I'll respond to your inquiry as soon as possible.
                   </p>
                   
-                  <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
+                  <form id="contact-form" onSubmit={handleSubmit} className="space-y-6" noValidate role="form" aria-label="Contact form">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                         Full Name <span className="text-red-500">*</span>
@@ -400,9 +405,12 @@ const Contact: React.FC = () => {
                           formErrors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
                         }`}
                         placeholder="Your full name"
+                        aria-required="true"
+                        aria-invalid={!!formErrors.name}
+                        aria-describedby={formErrors.name ? "name-error" : undefined}
                       />
                       {formErrors.name && (
-                        <p className="mt-1 text-sm text-red-600">{formErrors.name}</p>
+                        <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">{formErrors.name}</p>
                       )}
                     </div>
                     
@@ -421,9 +429,12 @@ const Contact: React.FC = () => {
                           formErrors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
                         }`}
                         placeholder="Your email address"
+                        aria-required="true"
+                        aria-invalid={!!formErrors.email}
+                        aria-describedby={formErrors.email ? "email-error" : undefined}
                       />
                       {formErrors.email && (
-                        <p className="mt-1 text-sm text-red-600">{formErrors.email}</p>
+                        <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">{formErrors.email}</p>
                       )}
                     </div>
                     

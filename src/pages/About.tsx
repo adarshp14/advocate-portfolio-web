@@ -1,32 +1,80 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
+import OptimizedImage from '../components/OptimizedImage';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { Helmet } from 'react-helmet-async';
 
-const About = () => {
-  // Animation on scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.reveal');
-      
-      elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('animate-fade-in');
-          element.classList.remove('opacity-0');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Trigger once on load
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const About: React.FC = () => {
+  // Use custom hook for scroll animations
+  useScrollAnimation();
   
   return (
     <>
+      <Helmet>
+        <title>About Muhammad Obaid - Experienced Lawyer in Kolkata & Howrah</title>
+        <meta name="description" content="Learn about Muhammad Obaid, an experienced advocate practicing at Calcutta High Court. Professional background, education, and legal expertise in civil litigation, criminal defense, and arbitration across West Bengal." />
+        <meta name="keywords" content="Muhammad Obaid lawyer, Kolkata advocate biography, Calcutta High Court lawyer profile, legal expertise West Bengal, civil litigation attorney Kolkata, criminal defense lawyer Howrah" />
+        <meta name="author" content="Muhammad Obaid" />
+        <link rel="canonical" href="https://advocate-obaid.vercel.app/about" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="About Muhammad Obaid - Experienced Lawyer in Kolkata & Howrah" />
+        <meta property="og:description" content="Learn about Muhammad Obaid, an experienced advocate practicing at Calcutta High Court with expertise in civil litigation, criminal defense, and arbitration." />
+        <meta property="og:type" content="profile" />
+        <meta property="og:url" content="https://advocate-obaid.vercel.app/about" />
+        <meta property="og:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ObaidAdvocate" />
+        <meta name="twitter:title" content="About Muhammad Obaid - Experienced Lawyer in Kolkata & Howrah" />
+        <meta name="twitter:description" content="Learn about Muhammad Obaid, an experienced advocate practicing at Calcutta High Court with expertise in civil litigation, criminal defense, and arbitration." />
+        <meta name="twitter:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Structured Data for Person */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Muhammad Obaid",
+              "jobTitle": "Advocate",
+              "description": "Experienced lawyer practicing at Calcutta High Court with expertise in civil litigation, criminal defense, and arbitration",
+              "url": "https://advocate-obaid.vercel.app/about",
+              "image": "https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png",
+              "email": "obaidmu018@gmail.com",
+              "telephone": "+91-9123058260",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "7A Kiran Shankar Roy Road",
+                "addressLocality": "Kolkata",
+                "addressRegion": "West Bengal",
+                "postalCode": "700001",
+                "addressCountry": "India"
+              },
+              "affiliation": {
+                "@type": "Organization",
+                "name": "Calcutta High Court"
+              },
+              "alumniOf": {
+                "@type": "Organization",
+                "name": "Bar Council of India"
+              },
+              "hasOccupation": {
+                "@type": "Occupation",
+                "name": "Advocate",
+                "occupationLocation": {
+                  "@type": "City",
+                  "name": "Kolkata"
+                }
+              },
+              "knowsLanguage": ["English", "Hindi", "Bengali"]
+            }
+          `}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="relative bg-lawyer-navy py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -44,10 +92,11 @@ const About = () => {
             <div className="md:flex">
               {/* Profile Image Section */}
               <div className="md:w-1/3 bg-lawyer-navy p-8 flex flex-col justify-center items-center text-center">
-                <img 
+                <OptimizedImage 
                   src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
                   alt="Muhammad Obaid" 
                   className="w-48 h-48 rounded-full object-cover border-4 border-white mb-6"
+                  aspectRatio="1/1"
                 />
                 <h3 className="text-white text-xl font-bold mb-2">Muhammad Obaid</h3>
                 <p className="text-gray-300 mb-4">Advocate & Legal Consultant</p>
@@ -83,10 +132,11 @@ const About = () => {
                     <h3 className="text-xl font-bold text-lawyer-navy mb-2">Advocate Certificate</h3>
                     <p className="text-gray-600">Bar Council of India, 2023</p>
                     <div className="mt-4 border rounded-lg p-2 shadow-sm max-w-lg mx-auto md:mx-0">
-                      <img 
+                      <OptimizedImage 
                         src="/lovable-uploads/4e94bb51-40a2-456b-8dfd-8eeb8f380002.png" 
                         alt="Muhammad Obaid's Certificate of Practice" 
                         className="w-full rounded"
+                        aspectRatio="4/3"
                       />
                       <p className="text-sm text-gray-500 mt-2 text-center">Certificate of Practice - Enrollment No. F/1220/867/2022</p>
                     </div>

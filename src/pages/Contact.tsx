@@ -324,10 +324,10 @@ const Contact: React.FC = () => {
         <div className="absolute inset-0 bg-lawyer-navy bg-opacity-70" style={{ height: '50%' }}></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 animate-fade-in">
             Get in Touch
           </h1>
-          <p className="text-xl text-white mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
             Ready to discuss your legal needs? Reach out to schedule a consultation.
           </p>
           <div className="h-1 w-20 bg-lawyer-gold mx-auto mb-12"></div>

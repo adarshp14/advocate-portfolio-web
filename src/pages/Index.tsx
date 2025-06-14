@@ -78,7 +78,7 @@ const Index: React.FC = () => {
       </Helmet>
       
       {/* Hero Section - Added mt-16 to create proper spacing after navbar */}
-      <section className="relative h-screen mt-16 flex items-center justify-center text-center">
+      <section className="relative min-h-screen flex items-center justify-center text-center py-20 mt-16">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 
@@ -89,10 +89,10 @@ const Index: React.FC = () => {
         <div className="absolute inset-0 bg-lawyer-navy bg-opacity-70"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight max-w-4xl mx-auto">
             Advocate Muhammad Obaid - Legal Solutions in Kolkata & Howrah
           </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
             Trusted legal representation at Calcutta High Court and district courts across West Bengal. Dedicated to excellence and committed to your success.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">

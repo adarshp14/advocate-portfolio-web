@@ -4,11 +4,16 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import ConsultationButton from './ConsultationButton';
 
-const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface NavLinkItem {
+  name: string;
+  path: string;
+}
+
+const Navbar: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const location = useLocation();
 
-  const navLinks = [
+  const navLinks: NavLinkItem[] = [
     { name: "Home", path: "/" },
     { name: "About Me", path: "/about" },
     { name: "Services", path: "/services" },
@@ -21,7 +26,7 @@ const Navbar = () => {
   }, [location.pathname]);
   
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#1A2A44] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
+    <header className="fixed top-0 w-full z-50 bg-lawyer-navy shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
@@ -46,7 +51,7 @@ const Navbar = () => {
                 {link.name}
               </NavLink>
             ))}
-            <ConsultationButton customStyle="bg-[#FFD700] text-[#1A2A44] px-4 py-2 rounded" />
+            <ConsultationButton customStyle="bg-lawyer-gold text-lawyer-navy px-4 py-2 rounded" />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -61,7 +66,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 bg-[#1A2A44] rounded-md mt-2 animate-fade-in">
+          <nav className="md:hidden py-4 bg-lawyer-navy rounded-md mt-2 animate-fade-in">
             <ul className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
@@ -76,7 +81,7 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="pt-2 px-4">
-                <ConsultationButton customStyle="bg-[#FFD700] text-[#1A2A44] w-full px-4 py-2 rounded" fullWidth />
+                <ConsultationButton customStyle="bg-lawyer-gold text-lawyer-navy w-full px-4 py-2 rounded" fullWidth />
               </li>
             </ul>
           </nav>

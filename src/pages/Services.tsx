@@ -1,31 +1,13 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import ConsultationButton from '../components/ConsultationButton';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const Services = () => {
-  // Animation on scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.reveal');
-      
-      elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('animate-fade-in');
-          element.classList.remove('opacity-0');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Trigger once on load
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const Services: React.FC = () => {
+  // Use custom hook for scroll animations
+  useScrollAnimation();
   
   const services = [
     {
@@ -110,6 +92,123 @@ const Services = () => {
   
   return (
     <>
+      <Helmet>
+        <title>Legal Services in Kolkata & Howrah - Muhammad Obaid Advocate</title>
+        <meta name="description" content="Comprehensive legal services by Muhammad Obaid in Kolkata & Howrah. Civil litigation, criminal defense, family law, property disputes, corporate law, and document drafting. Expert representation at Calcutta High Court." />
+        <meta name="keywords" content="legal services Kolkata, lawyer services Howrah, civil litigation Kolkata, criminal defense attorney, family law lawyer West Bengal, property dispute lawyer, corporate law services Kolkata, legal documentation services" />
+        <meta name="author" content="Muhammad Obaid" />
+        <link rel="canonical" href="https://advocate-obaid.vercel.app/services" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Legal Services in Kolkata & Howrah - Muhammad Obaid Advocate" />
+        <meta property="og:description" content="Comprehensive legal services including civil litigation, criminal defense, family law, and property disputes. Expert representation at Calcutta High Court." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://advocate-obaid.vercel.app/services" />
+        <meta property="og:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ObaidAdvocate" />
+        <meta name="twitter:title" content="Legal Services in Kolkata & Howrah - Muhammad Obaid Advocate" />
+        <meta name="twitter:description" content="Comprehensive legal services including civil litigation, criminal defense, family law, and property disputes. Expert representation at Calcutta High Court." />
+        <meta name="twitter:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Structured Data for Service */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Legal Services",
+              "description": "Comprehensive legal services including civil litigation, criminal defense, family law, property disputes, corporate law, and legal documentation",
+              "provider": {
+                "@type": "LegalService",
+                "name": "Muhammad Obaid Legal Practice",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "7A Kiran Shankar Roy Road",
+                  "addressLocality": "Kolkata",
+                  "addressRegion": "West Bengal",
+                  "postalCode": "700001",
+                  "addressCountry": "India"
+                },
+                "telephone": "+91-9123058260",
+                "email": "obaidmu018@gmail.com"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Kolkata"
+                },
+                {
+                  "@type": "City", 
+                  "name": "Howrah"
+                },
+                {
+                  "@type": "State",
+                  "name": "West Bengal"
+                }
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Legal Services Catalog",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Civil Litigation",
+                      "description": "Expert representation in civil cases including contract disputes, property matters, and consumer rights"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service", 
+                      "name": "Criminal Defense",
+                      "description": "Professional representation in criminal proceedings with focus on client rights protection"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Family Law",
+                      "description": "Expert advice on divorce, child custody, alimony, and domestic relations matters"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Property Disputes",
+                      "description": "Legal support for property-related conflicts, title disputes, and documentation"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Corporate Law",
+                      "description": "Legal support for businesses from startups to established corporations"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Legal Documentation",
+                      "description": "Professional drafting and vetting of legal documents and agreements"
+                    }
+                  }
+                ]
+              }
+            }
+          `}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
@@ -140,7 +239,7 @@ const Services = () => {
             {services.map((service, index) => (
               <div 
                 key={service.id} 
-                className="bg-white rounded-lg shadow-lg overflow-hidden opacity-0 reveal"
+                className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden opacity-0 reveal"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="h-48 overflow-hidden">

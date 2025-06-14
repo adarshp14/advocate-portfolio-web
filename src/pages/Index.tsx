@@ -1,32 +1,14 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import ConsultationButton from '../components/ConsultationButton';
+import OptimizedImage from '../components/OptimizedImage';
 import { Helmet } from 'react-helmet-async';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const Index = () => {
-  // Animation on scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.reveal');
-      
-      elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('animate-fade-in');
-          element.classList.remove('opacity-0');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Trigger once on load
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const Index: React.FC = () => {
+  // Use custom hook for scroll animations
+  useScrollAnimation();
   
   return (
     <>
@@ -140,9 +122,9 @@ const Index = () => {
               <p className="text-lg text-gray-700 mb-6">
                 As an advocate based in Kolkata and Howrah, I handle both civil and criminal matters with a focus on providing tailored legal solutions for each client. I also specialize in arbitration and facilitate the Alternate Dispute Resolution (ADR) process.
               </p>
-              <Link to="/about" className="text-lawyer-navy font-medium inline-flex items-center group">
+              <Link to="/about" className="link-primary">
                 Learn More About My Legal Practice
-                <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </Link>
@@ -220,12 +202,12 @@ const Index = () => {
                 link: "/services#arbitration"
               }
             ].map((service, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 opacity-0 reveal">
+              <div key={index} className="card-primary opacity-0 reveal">
                 <h3 className="text-xl font-bold text-lawyer-navy mb-3">{service.title}</h3>
                 <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link to={service.link} className="text-lawyer-navy font-medium inline-flex items-center group">
+                <Link to={service.link} className="link-primary">
                   Learn More
-                  <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </Link>
@@ -276,14 +258,14 @@ const Index = () => {
                 date: "November 5, 2023"
               }
             ].map((post, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden opacity-0 reveal">
+              <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden opacity-0 reveal">
                 <div className="p-6">
                   <p className="text-sm text-lawyer-gold mb-2">{post.date}</p>
                   <h3 className="text-xl font-bold text-lawyer-navy mb-3">{post.title}</h3>
                   <p className="text-gray-700 mb-4">{post.excerpt}</p>
-                  <Link to={post.slug} className="text-lawyer-navy font-medium inline-flex items-center group">
+                  <Link to={post.slug} className="link-primary">
                     Read Full Article
-                    <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
                   </Link>
@@ -318,9 +300,9 @@ const Index = () => {
                 <p className="text-gray-700 mb-2">7A KIRAN SHANKAR ROY ROAD</p>
                 <p className="text-gray-700 mb-6">KOLKATA, WEST BENGAL, PIN 700001</p>
                 <p className="text-gray-700 mb-4">Specializing in Calcutta High Court representation and civil litigation matters.</p>
-                <Link to="/contact" className="text-lawyer-navy font-medium inline-flex items-center group">
+                <Link to="/contact" className="link-primary">
                   Contact This Location
-                  <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </Link>
@@ -330,9 +312,9 @@ const Index = () => {
                 <p className="text-gray-700 mb-2">47 PILKHANA 3RD LANE</p>
                 <p className="text-gray-700 mb-6">HOWRAH, WEST BENGAL, PIN 711101</p>
                 <p className="text-gray-700 mb-4">Providing legal services for local Howrah matters and district court cases.</p>
-                <Link to="/contact" className="text-lawyer-navy font-medium inline-flex items-center group">
+                <Link to="/contact" className="link-primary">
                   Contact This Location
-                  <svg className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </Link>

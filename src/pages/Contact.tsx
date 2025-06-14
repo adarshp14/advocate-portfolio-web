@@ -1,54 +1,144 @@
 
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import { Helmet } from 'react-helmet-async';
 import emailjs from 'emailjs-com';
 import GoogleMap from '../components/GoogleMap';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+interface FormErrors {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const googleMapsApiKey = 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE';
+  const [formErrors, setFormErrors] = useState<FormErrors>({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState<number>(0);
   
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.reveal');
-      
-      elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('animate-fade-in');
-          element.classList.remove('opacity-0');
+  // Use custom hook for scroll animations
+  useScrollAnimation();
+  
+  // Environment variables with fallbacks
+  const emailjsConfig = {
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_6managk',
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_f5yju3b',
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'yo0m4VAbhpETK_JGa'
+  };
+  const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE';
+  
+  
+  // Validation functions
+  const validateField = (name: string, value: string) => {
+    let error = '';
+    
+    switch (name) {
+      case 'name':
+        if (!value.trim()) {
+          error = 'Name is required';
+        } else if (value.trim().length < 2) {
+          error = 'Name must be at least 2 characters';
+        } else if (!/^[a-zA-Z\s]+$/.test(value.trim())) {
+          error = 'Name can only contain letters and spaces';
         }
-      });
-    };
+        break;
+      case 'email':
+        if (!value.trim()) {
+          error = 'Email is required';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) {
+          error = 'Please enter a valid email address';
+        }
+        break;
+      case 'phone':
+        if (value.trim() && !/^[\d\s\-\+\(\)]+$/.test(value.trim())) {
+          error = 'Please enter a valid phone number';
+        }
+        break;
+      case 'message':
+        if (!value.trim()) {
+          error = 'Message is required';
+        } else if (value.trim().length < 10) {
+          error = 'Message must be at least 10 characters';
+        }
+        break;
+    }
     
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
+    return error;
+  };
+
+  const sanitizeInput = (value: string) => {
+    // Basic HTML sanitization
+    return value.replace(/<[^>]*>/g, '').trim();
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    const sanitizedValue = sanitizeInput(value);
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: sanitizedValue
+    }));
+    
+    // Real-time validation
+    const error = validateField(name, sanitizedValue);
+    setFormErrors(prev => ({
+      ...prev,
+      [name]: error
     }));
   };
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Rate limiting - prevent submissions within 30 seconds
+    const currentTime = Date.now();
+    if (currentTime - lastSubmissionTime < 30000) {
+      toast.error('Please wait 30 seconds before submitting again.');
+      return;
+    }
+    
+    // Validate all fields
+    const errors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      phone: validateField('phone', formData.phone),
+      message: validateField('message', formData.message)
+    };
+    
+    setFormErrors(errors);
+    
+    // Check if there are any errors
+    if (Object.values(errors).some(error => error !== '')) {
+      toast.error('Please fix the errors in the form before submitting.');
+      return;
+    }
+    
     setIsSubmitting(true);
+    setLastSubmissionTime(currentTime);
     
     // Current timestamp for the email
-    const currentTime = new Date().toLocaleString();
+    const emailTimestamp = new Date().toLocaleString();
     
     const templateParams = {
       from_name: formData.name,
@@ -90,7 +180,7 @@ const Contact = () => {
                   <div style="color: #2c3e50; font-size: 16px">
                     <strong>${formData.name}</strong>
                   </div>
-                  <div style="color: #cccccc; font-size: 13px">${currentTime}</div>
+                  <div style="color: #cccccc; font-size: 13px">${emailTimestamp}</div>
                   <p style="font-size: 16px">${formData.message}</p>
                   <p style="font-size: 14px"><strong>Email:</strong> ${formData.email}</p>
                   <p style="font-size: 14px"><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
@@ -103,14 +193,20 @@ const Contact = () => {
     };
     
     emailjs.send(
-      'service_6managk',
-      'template_f5yju3b',
+      emailjsConfig.serviceId,
+      emailjsConfig.templateId,
       templateParams,
-      'yo0m4VAbhpETK_JGa'
+      emailjsConfig.publicKey
     )
       .then(() => {
         toast.success('Your message has been sent successfully!');
         setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+        setFormErrors({
           name: '',
           email: '',
           phone: '',
@@ -128,6 +224,89 @@ const Contact = () => {
   
   return (
     <>
+      <Helmet>
+        <title>Contact Muhammad Obaid - Lawyer in Kolkata & Howrah | Book Consultation</title>
+        <meta name="description" content="Contact Muhammad Obaid, experienced advocate in Kolkata & Howrah. Book a legal consultation today. Office at Calcutta High Court and Howrah. Call +91-9123058260 or email obaidmu018@gmail.com for professional legal services." />
+        <meta name="keywords" content="contact lawyer Kolkata, legal consultation Howrah, book appointment advocate, Muhammad Obaid contact, Calcutta High Court lawyer contact, legal services appointment Kolkata, West Bengal lawyer consultation" />
+        <meta name="author" content="Muhammad Obaid" />
+        <link rel="canonical" href="https://advocate-obaid.vercel.app/contact" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Contact Muhammad Obaid - Lawyer in Kolkata & Howrah | Book Consultation" />
+        <meta property="og:description" content="Contact Muhammad Obaid for legal consultation in Kolkata & Howrah. Expert legal services at Calcutta High Court and district courts across West Bengal." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://advocate-obaid.vercel.app/contact" />
+        <meta property="og:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ObaidAdvocate" />
+        <meta name="twitter:title" content="Contact Muhammad Obaid - Lawyer in Kolkata & Howrah | Book Consultation" />
+        <meta name="twitter:description" content="Contact Muhammad Obaid for legal consultation in Kolkata & Howrah. Expert legal services at Calcutta High Court and district courts across West Bengal." />
+        <meta name="twitter:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
+        
+        {/* Structured Data for ContactPage */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "name": "Contact Muhammad Obaid - Legal Services",
+              "description": "Contact page for Muhammad Obaid Legal Practice in Kolkata and Howrah",
+              "url": "https://advocate-obaid.vercel.app/contact",
+              "mainEntity": {
+                "@type": "LegalService",
+                "name": "Muhammad Obaid Legal Practice",
+                "address": [
+                  {
+                    "@type": "PostalAddress",
+                    "name": "Kolkata Chamber",
+                    "streetAddress": "2nd Floor (Back Side), 7A Kiran Shankar Roy Road",
+                    "addressLocality": "Kolkata",
+                    "addressRegion": "West Bengal",
+                    "postalCode": "700001",
+                    "addressCountry": "India"
+                  },
+                  {
+                    "@type": "PostalAddress",
+                    "name": "Howrah Chamber/Residence",
+                    "streetAddress": "47 Pilkhana 3rd Lane",
+                    "addressLocality": "Howrah",
+                    "addressRegion": "West Bengal", 
+                    "postalCode": "711101",
+                    "addressCountry": "India"
+                  }
+                ],
+                "telephone": "+91-9123058260",
+                "email": "obaidmu018@gmail.com",
+                "openingHoursSpecification": [
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    "opens": "09:00",
+                    "closes": "18:00"
+                  },
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Saturday",
+                    "opens": "10:00",
+                    "closes": "14:00"
+                  }
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-9123058260",
+                  "contactType": "Legal Services",
+                  "availableLanguage": ["English", "Hindi", "Bengali"],
+                  "areaServed": ["Kolkata", "Howrah", "West Bengal"]
+                }
+              }
+            }
+          `}
+        </script>
+      </Helmet>
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
@@ -217,9 +396,14 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:border-transparent"
+                        className={`form-input ${
+                          formErrors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         placeholder="Your full name"
                       />
+                      {formErrors.name && (
+                        <p className="mt-1 text-sm text-red-600">{formErrors.name}</p>
+                      )}
                     </div>
                     
                     <div>
@@ -233,9 +417,14 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:border-transparent"
+                        className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:ring-offset-2 focus:border-transparent transition-colors duration-200 ${
+                          formErrors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         placeholder="Your email address"
                       />
+                      {formErrors.email && (
+                        <p className="mt-1 text-sm text-red-600">{formErrors.email}</p>
+                      )}
                     </div>
                     
                     <div>
@@ -248,9 +437,14 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:border-transparent"
+                        className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:ring-offset-2 focus:border-transparent transition-colors duration-200 ${
+                          formErrors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         placeholder="Your phone number"
                       />
+                      {formErrors.phone && (
+                        <p className="mt-1 text-sm text-red-600">{formErrors.phone}</p>
+                      )}
                     </div>
                     
                     <div>
@@ -264,9 +458,14 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:border-transparent"
+                        className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-lawyer-navy focus:ring-offset-2 focus:border-transparent transition-colors duration-200 ${
+                          formErrors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                        }`}
                         placeholder="Please describe your legal concerns or questions"
                       ></textarea>
+                      {formErrors.message && (
+                        <p className="mt-1 text-sm text-red-600">{formErrors.message}</p>
+                      )}
                     </div>
                     
                     <div>

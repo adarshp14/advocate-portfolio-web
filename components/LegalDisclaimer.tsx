@@ -1,13 +1,23 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
 const LegalDisclaimer: React.FC = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Check if user has already accepted the disclaimer in this session
+    const hasAccepted = sessionStorage.getItem('legalDisclaimerAccepted');
+    if (!hasAccepted) {
+      setIsOpen(true);
+    }
+  }, []);
 
   const handleAccept = () => {
+    // Store acceptance in sessionStorage (clears when tab is closed)
+    sessionStorage.setItem('legalDisclaimerAccepted', 'true');
     setIsOpen(false);
   };
 

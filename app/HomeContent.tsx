@@ -30,7 +30,7 @@ export default function HomeContent() {
             Trusted legal representation at Calcutta High Court and district courts across West Bengal. Dedicated to excellence and committed to your success.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <ConsultationButton />
+            <ConsultationButton variant="hero" />
             <Link href="/services" className="btn-secondary">
               Explore Legal Services
             </Link>
@@ -153,7 +153,7 @@ export default function HomeContent() {
           <div className="mt-12 text-center opacity-0 reveal">
             <p className="text-xl font-medium text-lawyer-navy mb-6">Need legal help in Kolkata or Howrah? Contact me today!</p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <ConsultationButton />
+              <ConsultationButton variant="prominent" />
               <Link href="/contact" className="btn-secondary">
                 View Contact Information
               </Link>

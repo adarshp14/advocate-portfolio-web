@@ -156,7 +156,7 @@ export default function ServicesContent() {
               Whether you're facing a complex legal challenge or simply need advice, I'm here to help you navigate the legal system with confidence.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <ConsultationButton />
+              <ConsultationButton variant="prominent" />
               <Link href="/contact" className="btn-secondary">
                 Contact Me
               </Link>

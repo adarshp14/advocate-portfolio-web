@@ -162,60 +162,6 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* Recent Blog Posts Section - This was missing! */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 opacity-0 reveal">
-            <h2 className="section-title inline-block pb-3 mb-4 after:left-1/2 after:-translate-x-1/2">Legal Insights & Articles</h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Stay informed with the latest legal updates and advice for Kolkata and Howrah residents.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "How to Find the Best Lawyer in Kolkata",
-                excerpt: "Discover the key factors to consider when searching for legal representation in Kolkata and Howrah.",
-                slug: "/blog/how-to-find-best-lawyer-kolkata",
-                date: "November 16, 2023"
-              },
-              {
-                title: "Civil Litigation Laws in India Explained",
-                excerpt: "A comprehensive guide to understanding civil litigation processes in West Bengal courts.",
-                slug: "/blog/civil-litigation-laws-india-explained",
-                date: "November 10, 2023"
-              },
-              {
-                title: "Avoid These Legal Mistakes in Kolkata & Howrah",
-                excerpt: "Common legal pitfalls and how to avoid them when dealing with legal matters in West Bengal.",
-                slug: "/blog/avoid-legal-mistakes-kolkata-howrah",
-                date: "November 5, 2023"
-              }
-            ].map((post, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden opacity-0 reveal">
-                <div className="p-6">
-                  <p className="text-sm text-lawyer-gold mb-2">{post.date}</p>
-                  <h3 className="text-xl font-bold text-lawyer-navy mb-3">{post.title}</h3>
-                  <p className="text-gray-700 mb-4">{post.excerpt}</p>
-                  <Link href={post.slug} className="link-primary group">
-                    Read Full Article
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-10 text-center opacity-0 reveal">
-            <Link href="/blog" className="btn-primary">
-              View All Blog Posts
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Location Section */}
       <section className="py-16 bg-white">

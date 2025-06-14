@@ -46,8 +46,7 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = React.memo(({
           bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-orange-500
           text-white px-8 py-4 rounded-lg text-lg font-bold
           shadow-2xl hover:shadow-orange-500/50 border-3 border-white
-          ring-4 ring-orange-400/30 hover:ring-red-400/50
-          animate-pulse hover:animate-none`;
+          ring-4 ring-orange-400/30 hover:ring-red-400/50`;
       case 'prominent':
         return `${baseClasses}
           bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500
@@ -103,9 +102,9 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = React.memo(({
         {getButtonText()}
       </span>
       
-      {/* Subtle pulse effect for hero variant */}
+      {/* Subtle glow effect for hero variant */}
       {variant === 'hero' && (
-        <span className="absolute inset-0 rounded-lg bg-lawyer-gold/30 animate-ping opacity-75"></span>
+        <span className="absolute inset-0 rounded-lg bg-orange-400/20 opacity-75"></span>
       )}
     </button>
   );

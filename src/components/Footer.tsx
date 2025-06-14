@@ -59,18 +59,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-700 pt-6 mt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-center md:text-left text-gray-400 text-sm mb-4 md:mb-0">
+          <div className="flex flex-col md:flex-row justify-center items-center">
+            <p className="text-center text-gray-400 text-sm">
               © {currentYear} Muhammad Obaid | All Rights Reserved
             </p>
-            <div className="text-center md:text-right">
-              <p className="text-sm text-gray-400">
-                Recommended in
-                <a href="https://vidhikarya.com/" target="_blank" rel="noopener noreferrer" className="text-lawyer-gold mx-1 hover:underline">Vidhikarya</a>
-                and
-                <a href="https://pathlegal.in/" target="_blank" rel="noopener noreferrer" className="text-lawyer-gold mx-1 hover:underline">PathLegal</a>
-              </p>
-            </div>
           </div>
         </div>
       </div>

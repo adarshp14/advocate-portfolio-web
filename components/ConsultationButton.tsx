@@ -43,18 +43,22 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = React.memo(({
     switch (variant) {
       case 'hero':
         return `${baseClasses} 
-          bg-gradient-to-r from-lawyer-gold to-amber-400 hover:from-amber-400 hover:to-lawyer-gold
-          text-lawyer-navy px-8 py-4 rounded-lg text-lg font-bold
-          shadow-xl hover:shadow-2xl border-2 border-lawyer-gold
+          bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-500 hover:to-orange-500
+          text-white px-8 py-4 rounded-lg text-lg font-bold
+          shadow-2xl hover:shadow-orange-500/50 border-3 border-white
+          ring-4 ring-orange-400/30 hover:ring-red-400/50
           animate-pulse hover:animate-none`;
       case 'prominent':
         return `${baseClasses}
-          bg-lawyer-gold hover:bg-amber-400 text-lawyer-navy px-7 py-3.5 rounded-lg
-          shadow-lg hover:shadow-xl border border-lawyer-gold/20`;
+          bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500
+          text-white px-7 py-3.5 rounded-lg font-bold
+          shadow-xl hover:shadow-emerald-500/40 border-2 border-white
+          ring-2 ring-emerald-400/30`;
       default:
         return `${baseClasses}
-          bg-lawyer-navy hover:bg-blue-900 text-white px-6 py-3 rounded-md
-          shadow-md hover:shadow-lg border border-lawyer-navy/20`;
+          bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-600
+          text-white px-6 py-3 rounded-md font-semibold
+          shadow-lg hover:shadow-blue-500/40 border-2 border-white/50`;
     }
   };
 

@@ -185,8 +185,10 @@ const Services: React.FC = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-lawyer-navy via-blue-800 to-slate-700" 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 
+            backgroundImage: "url('https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop')",
+            backgroundPosition: 'center 30%',
             height: '50%'
           }}
         />

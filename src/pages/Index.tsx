@@ -80,8 +80,13 @@ const Index: React.FC = () => {
       {/* Hero Section - Added mt-16 to create proper spacing after navbar */}
       <section className="relative h-screen mt-16 flex items-center justify-center text-center">
         <div 
-          className="absolute inset-0 bg-gradient-to-r from-lawyer-navy to-blue-900" 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+          style={{ 
+            backgroundImage: "url('https://images.pexels.com/photos/5668772/pexels-photo-5668772.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop')",
+            backgroundPosition: 'center'
+          }}
         />
+        <div className="absolute inset-0 bg-lawyer-navy bg-opacity-70"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">

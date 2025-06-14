@@ -2,6 +2,9 @@
 interface GoogleMapOptions {
   center: { lat: number; lng: number };
   zoom: number;
+  mapTypeControl?: boolean;
+  streetViewControl?: boolean;
+  fullscreenControl?: boolean;
 }
 
 interface GoogleMarkerOptions {

@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface FooterLink {
@@ -42,7 +41,7 @@ const Footer: React.FC = () => {
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
-                    to={link.path}
+                    href={link.path}
                     className="text-gray-300 hover:text-lawyer-gold transition-colors duration-300"
                   >
                     {link.name}
@@ -52,22 +51,45 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-3">Contact</h4>
-            <address className="not-italic text-gray-300 space-y-2">
-              <p><span className="font-medium text-lawyer-gold">Kolkata:</span> 7A Kiran Shankar Roy Road</p>
-              <p>Kolkata, West Bengal, 700001</p>
-              <p><span className="font-medium text-lawyer-gold">Howrah:</span> 47 Pilkhana 3rd Lane</p>
-              <p>Howrah, West Bengal, 711101</p>
-              <p>Email: obaidmu018@gmail.com</p>
-              <p>Phone: +91-9123058260</p>
-            </address>
+            <h4 className="text-lg font-semibold mb-3">Contact Information</h4>
+            <div className="space-y-2 text-gray-300">
+              <p>
+                <strong>Phone:</strong>{' '}
+                <a href="tel:+919123058260" className="hover:text-lawyer-gold transition-colors">
+                  +91-9123058260
+                </a>
+              </p>
+              <p>
+                <strong>Email:</strong>{' '}
+                <a href="mailto:obaidmu018@gmail.com" className="hover:text-lawyer-gold transition-colors">
+                  obaidmu018@gmail.com
+                </a>
+              </p>
+              <p className="text-sm">
+                <strong>Kolkata Chamber:</strong><br />
+                7A Kiran Shankar Roy Road, Kolkata, WB 700001
+              </p>
+              <p className="text-sm">
+                <strong>Howrah Chamber:</strong><br />
+                47 Pilkhana 3rd Lane, Howrah, WB 711101
+              </p>
+            </div>
           </div>
         </div>
-        <div className="border-t border-gray-700 pt-6 mt-6">
-          <div className="flex flex-col md:flex-row justify-center items-center">
-            <p className="text-center text-gray-400 text-sm">
-              © {currentYear} Muhammad Obaid | All Rights Reserved
+        
+        <div className="border-t border-gray-600 pt-6 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-sm text-gray-300">
+              © {currentYear} Muhammad Obaid. All rights reserved.
             </p>
+            <div className="flex space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-300 hover:text-lawyer-gold transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-300 hover:text-lawyer-gold transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>

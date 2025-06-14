@@ -1,11 +1,11 @@
+'use client'
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { toast } from 'sonner';
-import { Helmet } from 'react-helmet-async';
 import emailjs from '@emailjs/browser';
-import GoogleMap from '../components/GoogleMap';
-import OptimizedImage from '../components/OptimizedImage';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import GoogleMap from '@/components/GoogleMap';
+import OptimizedImage from '@/components/OptimizedImage';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface FormData {
   name: string;
@@ -21,7 +21,7 @@ interface FormErrors {
   message: string;
 }
 
-const Contact: React.FC = () => {
+export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -42,16 +42,15 @@ const Contact: React.FC = () => {
   
   // Memoize environment variables with fallbacks
   const emailjsConfig = useMemo(() => ({
-    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_6managk',
-    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_f5yju3b',
-    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'yo0m4VAbhpETK_JGa'
+    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_6managk',
+    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_f5yju3b',
+    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'yo0m4VAbhpETK_JGa'
   }), []);
   
   const googleMapsApiKey = useMemo(() => 
-    import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE',
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyCNP5jo8FG21OsiqfEgSGEtLcGuWueD6uE',
     []
   );
-  
   
   // Memoized validation functions
   const validateField = useCallback((name: string, value: string) => {
@@ -63,19 +62,19 @@ const Contact: React.FC = () => {
           error = 'Name is required';
         } else if (value.trim().length < 2) {
           error = 'Name must be at least 2 characters';
-        } else if (!/^[a-zA-Z\s]+$/.test(value.trim())) {
+        } else if (!/^[a-zA-Z\\s]+$/.test(value.trim())) {
           error = 'Name can only contain letters and spaces';
         }
         break;
       case 'email':
         if (!value.trim()) {
           error = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) {
+        } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value.trim())) {
           error = 'Please enter a valid email address';
         }
         break;
       case 'phone':
-        if (value.trim() && !/^[\d\s\-\+\(\)]+$/.test(value.trim())) {
+        if (value.trim() && !/^[\\d\\s\\-\\+\\(\\)]+$/.test(value.trim())) {
           error = 'Please enter a valid phone number';
         }
         break;
@@ -229,89 +228,6 @@ const Contact: React.FC = () => {
   
   return (
     <>
-      <Helmet>
-        <title>Contact Muhammad Obaid - Lawyer in Kolkata & Howrah | Book Consultation</title>
-        <meta name="description" content="Contact Muhammad Obaid, experienced advocate in Kolkata & Howrah. Book a legal consultation today. Office at Calcutta High Court and Howrah. Call +91-9123058260 or email obaidmu018@gmail.com for professional legal services." />
-        <meta name="keywords" content="contact lawyer Kolkata, legal consultation Howrah, book appointment advocate, Muhammad Obaid contact, Calcutta High Court lawyer contact, legal services appointment Kolkata, West Bengal lawyer consultation" />
-        <meta name="author" content="Muhammad Obaid" />
-        <link rel="canonical" href="https://advocate-obaid.vercel.app/contact" />
-        <meta name="robots" content="index, follow" />
-        <meta name="revisit-after" content="7 days" />
-        
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="Contact Muhammad Obaid - Lawyer in Kolkata & Howrah | Book Consultation" />
-        <meta property="og:description" content="Contact Muhammad Obaid for legal consultation in Kolkata & Howrah. Expert legal services at Calcutta High Court and district courts across West Bengal." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://advocate-obaid.vercel.app/contact" />
-        <meta property="og:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
-        
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@ObaidAdvocate" />
-        <meta name="twitter:title" content="Contact Muhammad Obaid - Lawyer in Kolkata & Howrah | Book Consultation" />
-        <meta name="twitter:description" content="Contact Muhammad Obaid for legal consultation in Kolkata & Howrah. Expert legal services at Calcutta High Court and district courts across West Bengal." />
-        <meta name="twitter:image" content="https://advocate-obaid.vercel.app/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" />
-        
-        {/* Structured Data for ContactPage */}
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "ContactPage",
-              "name": "Contact Muhammad Obaid - Legal Services",
-              "description": "Contact page for Muhammad Obaid Legal Practice in Kolkata and Howrah",
-              "url": "https://advocate-obaid.vercel.app/contact",
-              "mainEntity": {
-                "@type": "LegalService",
-                "name": "Muhammad Obaid Legal Practice",
-                "address": [
-                  {
-                    "@type": "PostalAddress",
-                    "name": "Kolkata Chamber",
-                    "streetAddress": "2nd Floor (Back Side), 7A Kiran Shankar Roy Road",
-                    "addressLocality": "Kolkata",
-                    "addressRegion": "West Bengal",
-                    "postalCode": "700001",
-                    "addressCountry": "India"
-                  },
-                  {
-                    "@type": "PostalAddress",
-                    "name": "Howrah Chamber/Residence",
-                    "streetAddress": "47 Pilkhana 3rd Lane",
-                    "addressLocality": "Howrah",
-                    "addressRegion": "West Bengal", 
-                    "postalCode": "711101",
-                    "addressCountry": "India"
-                  }
-                ],
-                "telephone": "+91-9123058260",
-                "email": "obaidmu018@gmail.com",
-                "openingHoursSpecification": [
-                  {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                    "opens": "09:00",
-                    "closes": "18:00"
-                  },
-                  {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": "Saturday",
-                    "opens": "10:00",
-                    "closes": "14:00"
-                  }
-                ],
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "telephone": "+91-9123058260",
-                  "contactType": "Legal Services",
-                  "availableLanguage": ["English", "Hindi", "Bengali"],
-                  "areaServed": ["Kolkata", "Howrah", "West Bengal"]
-                }
-              }
-            }
-          `}
-        </script>
-      </Helmet>
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
@@ -521,6 +437,4 @@ const Contact: React.FC = () => {
       </section>
     </>
   );
-};
-
-export default Contact;
+}

@@ -1,6 +1,8 @@
 
+'use client'
+
 import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 interface ConsultationButtonProps {
   fullWidth?: boolean;
@@ -11,10 +13,10 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = React.memo(({
   fullWidth = false, 
   customStyle 
 }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const handleClick = useCallback(() => {
-    navigate('/contact');
+    router.push('/contact');
     
     // Scroll to contact form if already on contact page
     if (window.location.pathname === '/contact') {
@@ -23,7 +25,7 @@ const ConsultationButton: React.FC<ConsultationButtonProps> = React.memo(({
         formElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [navigate]);
+  }, [router]);
   
   return (
     <button 

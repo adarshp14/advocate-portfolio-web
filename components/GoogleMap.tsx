@@ -51,9 +51,12 @@ const GoogleMap: React.FC<GoogleMapProps> = React.memo(({ address, apiKey }) => 
         // Use the Geocoding service to convert address to coordinates
         const geocoder = new window.google.maps.Geocoder();
         geocoder.geocode({ address }, (results, status) => {
-          if (status === 'OK' && results && results[0]) {
+          if (status === 'OK' && results && results[0] && mapRef.current) {
             const map = new window.google.maps.Map(mapRef.current, {
-              center: results[0].geometry.location,
+              center: {
+                lat: results[0].geometry.location.lat(),
+                lng: results[0].geometry.location.lng()
+              },
               zoom: 15,
               mapTypeControl: true,
               streetViewControl: true,
@@ -63,7 +66,10 @@ const GoogleMap: React.FC<GoogleMapProps> = React.memo(({ address, apiKey }) => 
             // Add a marker for the location
             new window.google.maps.Marker({
               map,
-              position: results[0].geometry.location,
+              position: {
+                lat: results[0].geometry.location.lat(),
+                lng: results[0].geometry.location.lng()
+              },
               animation: window.google.maps.Animation.DROP,
             });
           } else {
@@ -72,15 +78,17 @@ const GoogleMap: React.FC<GoogleMapProps> = React.memo(({ address, apiKey }) => 
             
             // Fallback to a default location (Calcutta High Court)
             const defaultPosition = { lat: 22.5698, lng: 88.3468 }; // Approximate coordinates for Calcutta High Court
-            const map = new window.google.maps.Map(mapRef.current, {
-              center: defaultPosition,
-              zoom: 15,
-            });
-            
-            new window.google.maps.Marker({
-              map,
-              position: defaultPosition,
-            });
+            if (mapRef.current) {
+              const map = new window.google.maps.Map(mapRef.current, {
+                center: defaultPosition,
+                zoom: 15,
+              });
+              
+              new window.google.maps.Marker({
+                map,
+                position: defaultPosition,
+              });
+            }
           }
         });
       } catch (error) {

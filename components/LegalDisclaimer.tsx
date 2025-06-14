@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -11,7 +13,7 @@ const LegalDisclaimer: React.FC = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-white border-2 border-lawyer-navy" closeButton={false}>
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-white border-2 border-lawyer-navy">
         <DialogHeader className="text-center pb-4">
           <div className="mb-4">
             <h1 className="text-2xl font-bold text-lawyer-navy font-playfair mb-2">

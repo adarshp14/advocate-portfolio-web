@@ -1,82 +1,18 @@
+'use client'
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ConsultationButton from '../components/ConsultationButton';
-import OptimizedImage from '../components/OptimizedImage';
-import { Helmet } from 'react-helmet-async';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { whyChooseItems, servicesPreviews } from '../data/services';
+import Link from 'next/link';
+import ConsultationButton from '@/components/ConsultationButton';
+import OptimizedImage from '@/components/OptimizedImage';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { whyChooseItems, servicesPreviews } from '@/data/services';
 
-const Index: React.FC = () => {
+const HomePage: React.FC = () => {
   // Use custom hook for scroll animations
   useScrollAnimation();
   
   return (
-    <>
-      <Helmet>
-        <title>Muhammad Obaid - Trusted Lawyer in Kolkata & Howrah, India</title>
-        <meta name="description" content="Muhammad Obaid provides expert legal representation at Calcutta High Court and trial courts across West Bengal. Book a consultation today!" />
-        <link rel="canonical" href="https://advocate-obaid.vercel.app/" />
-        <meta property="og:url" content="https://advocate-obaid.vercel.app/" />
-        <meta name="keywords" content="lawyer in Kolkata, lawyer in Howrah, Advocate Obaid, legal services India, civil litigation Kolkata, criminal defense West Bengal" />
-        <meta name="author" content="Muhammad Obaid" />
-        <meta name="robots" content="index, follow" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="language" content="English" />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "LegalService",
-              "name": "Muhammad Obaid - Legal Practice",
-              "description": "Expert legal representation at Calcutta High Court and trial courts across West Bengal",
-              "url": "https://advocate-obaid.vercel.app/",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Kolkata & Howrah",
-                "addressRegion": "West Bengal",
-                "addressCountry": "India"
-              },
-              "telephone": "+91-9123058260",
-              "email": "obaidmu018@gmail.com",
-              "serviceArea": "Kolkata, Howrah, West Bengal",
-              "availableChannel": {
-                "@type": "ServiceChannel",
-                "serviceUrl": "https://advocate-obaid.vercel.app/contact",
-                "serviceSmsNumber": "+91-9123058260"
-              },
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Legal Services",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Civil Litigation"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Criminal Defense"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Arbitration & ADR"
-                    }
-                  }
-                ]
-              }
-            }
-          `}
-        </script>
-      </Helmet>
-      
+    <>      
       {/* Hero Section - Added mt-16 to create proper spacing after navbar */}
       <section className="relative min-h-screen flex items-center justify-center text-center py-20 mt-16">
         <div 
@@ -97,7 +33,7 @@ const Index: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <ConsultationButton />
-            <Link to="/services" className="btn-secondary">
+            <Link href="/services" className="btn-secondary">
               Explore Legal Services
             </Link>
           </div>
@@ -124,7 +60,7 @@ const Index: React.FC = () => {
               <p className="text-lg text-gray-700 mb-6">
                 As an advocate based in Kolkata and Howrah, I handle both civil and criminal matters with a focus on providing tailored legal solutions for each client. I also specialize in arbitration and facilitate the Alternate Dispute Resolution (ADR) process.
               </p>
-              <Link to="/about" className="link-primary group">
+              <Link href="/about" className="link-primary group">
                 Learn More About My Legal Practice
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -191,7 +127,7 @@ const Index: React.FC = () => {
               <div key={index} className="card-primary opacity-0 reveal">
                 <h3 className="text-xl font-bold text-lawyer-navy mb-3">{service.title}</h3>
                 <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link to={service.link} className="link-primary group">
+                <Link href={service.link} className="link-primary group">
                   Learn More
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -205,7 +141,7 @@ const Index: React.FC = () => {
             <p className="text-xl font-medium text-lawyer-navy mb-6">Need legal help in Kolkata or Howrah? Contact me today!</p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <ConsultationButton />
-              <Link to="/contact" className="btn-secondary">
+              <Link href="/contact" className="btn-secondary">
                 View Contact Information
               </Link>
             </div>
@@ -232,7 +168,7 @@ const Index: React.FC = () => {
                 <p className="text-gray-700 mb-2">7A KIRAN SHANKAR ROY ROAD</p>
                 <p className="text-gray-700 mb-6">KOLKATA, WEST BENGAL, PIN 700001</p>
                 <p className="text-gray-700 mb-4">Specializing in Calcutta High Court representation and civil litigation matters.</p>
-                <Link to="/contact" className="link-primary group">
+                <Link href="/contact" className="link-primary group">
                   Contact This Location
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -244,7 +180,7 @@ const Index: React.FC = () => {
                 <p className="text-gray-700 mb-2">47 PILKHANA 3RD LANE</p>
                 <p className="text-gray-700 mb-6">HOWRAH, WEST BENGAL, PIN 711101</p>
                 <p className="text-gray-700 mb-4">Providing legal services for local Howrah matters and district court cases.</p>
-                <Link to="/contact" className="link-primary group">
+                <Link href="/contact" className="link-primary group">
                   Contact This Location
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -259,4 +195,4 @@ const Index: React.FC = () => {
   );
 };
 
-export default Index;
+export default HomePage;

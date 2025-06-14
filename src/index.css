@@ -137,7 +137,7 @@
   }
   
   .link-primary {
-    @apply text-lawyer-navy hover:text-lawyer-gold transition-colors duration-300 font-medium inline-flex items-center group;
+    @apply text-lawyer-navy hover:text-lawyer-gold transition-colors duration-300 font-medium inline-flex items-center;
   }
   
   .link-primary svg {

@@ -124,7 +124,7 @@ const Index: React.FC = () => {
               <p className="text-lg text-gray-700 mb-6">
                 As an advocate based in Kolkata and Howrah, I handle both civil and criminal matters with a focus on providing tailored legal solutions for each client. I also specialize in arbitration and facilitate the Alternate Dispute Resolution (ADR) process.
               </p>
-              <Link to="/about" className="link-primary">
+              <Link to="/about" className="link-primary group">
                 Learn More About My Legal Practice
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -191,7 +191,7 @@ const Index: React.FC = () => {
               <div key={index} className="card-primary opacity-0 reveal">
                 <h3 className="text-xl font-bold text-lawyer-navy mb-3">{service.title}</h3>
                 <p className="text-gray-700 mb-4">{service.description}</p>
-                <Link to={service.link} className="link-primary">
+                <Link to={service.link} className="link-primary group">
                   Learn More
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -232,7 +232,7 @@ const Index: React.FC = () => {
                 <p className="text-gray-700 mb-2">7A KIRAN SHANKAR ROY ROAD</p>
                 <p className="text-gray-700 mb-6">KOLKATA, WEST BENGAL, PIN 700001</p>
                 <p className="text-gray-700 mb-4">Specializing in Calcutta High Court representation and civil litigation matters.</p>
-                <Link to="/contact" className="link-primary">
+                <Link to="/contact" className="link-primary group">
                   Contact This Location
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -244,7 +244,7 @@ const Index: React.FC = () => {
                 <p className="text-gray-700 mb-2">47 PILKHANA 3RD LANE</p>
                 <p className="text-gray-700 mb-6">HOWRAH, WEST BENGAL, PIN 711101</p>
                 <p className="text-gray-700 mb-4">Providing legal services for local Howrah matters and district court cases.</p>
-                <Link to="/contact" className="link-primary">
+                <Link to="/contact" className="link-primary group">
                   Contact This Location
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>

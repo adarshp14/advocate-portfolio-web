@@ -314,10 +314,8 @@ const Contact: React.FC = () => {
       </Helmet>
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+          className="absolute inset-0 bg-gradient-to-br from-lawyer-navy via-slate-800 to-gray-700" 
           style={{ 
-            backgroundImage: "url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')",
-            backgroundPosition: 'center 30%',
             height: '50%'
           }}
         />
@@ -374,10 +372,11 @@ const Contact: React.FC = () => {
                 </div>
                 
                 <div className="mt-12 opacity-0 reveal">
-                  <img 
-                    src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Professional legal consultation meeting at Muhammad Obaid's law office in Kolkata" 
+                  <OptimizedImage 
+                    src="/lovable-uploads/381ae573-3196-4996-adc1-acbc78af6037.png" 
+                    alt="Professional legal consultation with Muhammad Obaid in Kolkata" 
                     className="rounded-lg shadow-lg w-full h-auto"
+                    aspectRatio="4/3"
                   />
                 </div>
               </div>
